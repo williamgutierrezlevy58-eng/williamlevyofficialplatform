@@ -115,23 +115,81 @@
             color: var(--secondary);
         }
 
-        .language-selector {
+        .language-btn {
             background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 0.3);
+            color: white;
             padding: 8px 15px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             cursor: pointer;
             transition: background 0.3s;
+            gap: 5px;
         }
-
-        .language-selector:hover {
-            background: rgba(255, 255, 255, 0.2);
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            padding: 10px 0;
+            margin-top: 5px;
         }
-
-        .language-selector i {
-            margin-right: 5px;
+        
+        .language-dropdown a {
+            display: block;
+            padding: 8px 15px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: background 0.3s;
         }
+        
+        .language-dropdown a:hover {
+            background: #f0f0f0;
+        }
+        
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #c62828;
+            }
 
         /* Hero Section */
         .hero {
@@ -647,10 +705,19 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
+                <div class="header-actions">
                 <div class="language-selector">
-                    <i class="fas fa-globe"></i>
-                    <span>English</span>
-                </div>
+                    <button class="language-btn">
+                        <i class="fas fa-globe"></i> EN
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="#">English</a>
+                        <a href="#">Spanish</a>
+                        <a href="#">French</a>
+                        <a href="#">German</a>
+                        <a href="#">Portuguese</a>                      
+                </div>                  
             </div>
         </div>
     </header>
@@ -660,7 +727,7 @@
         <div class="container">
             <h1>Welcome To</h1>
             <h1>William Levy Official Fan Platform</h1>
-            <p>Get exclusive access to fan memberships, and meet & greet opportunities with the star himself!</p>
+            <p>Get exclusive access to fan memberships, and meet & greet opportunities with the William Levy himself!</p>
             <a href="#products" class="btn">Explore Offers</a>
         </div>
     </section>
@@ -692,7 +759,7 @@
             <!-- Meet & Greet -->
             <div class="product-card" onclick="openModal('meetModal')">
                 <div class="product-image">
-                    <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/willevy.jpg" alt="William Levy Meet & Greet" id="meetImage">
+                    <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/Meet and greet.jpg" alt="William Levy Meet & Greet" id="meetImage">
                 </div>
                 <div class="product-info">
                     <h3>Meet & Greet</h3>
@@ -761,7 +828,7 @@
             <div class="formspree-status" id="formspreeStatus"></div>
 
             <div class="success-message" id="successMessage">
-                You submitted a request and the management will contact you via email shortly, always check your email for notification from us. Thank you.
+                You have submitted a request, The Management will contact you via email shortly, always check your email for notification from us. Thank you.
             </div>
 
             <button type="submit" class="btn" style="width: 100%;" id="contactSubmit">Submit Your Request</button>
@@ -770,40 +837,49 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About Us</h3>
-                    <p>The official William Levy fan site offering exclusive access to tickets, memberships, and meet & greet experiences.</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>The official William Levy fan site offering exclusive access to tickets, memberships, and meet & greet experiences.</p>
             </div>
 
-            <div class="copyright">
-                <p>&copy; 2025 William Levy Fan Platform. All rights reserved. | <a href="#" style="color: #ddd;">Privacy Policy</a> | <a href="#" style="color: #ddd;">Terms of Service</a></p>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/1ADrKnn5mi/" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/willylevy29?s=09" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/willevy?igsh=eno3YzdhNm1nazV1" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/user/WilliamLevy" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <p style="margin-top: 15px; font-size: 14px; color: #ccc;">Follow William Levy on social media for the latest updates!</p>
             </div>
         </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 William Levy Fan Platform. All rights reserved. | <a href="#" style="color: #ddd;">Privacy Policy</a> | <a href="#" style="color: #ddd;">Terms of Service</a></p>
+        </div>
+    </div>
     </footer>
-   
+            
     <!-- Membership Modal -->
     <div id="membershipModal" class="modal">
         <div class="modal-content">
@@ -1287,4 +1363,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
