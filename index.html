@@ -710,12 +710,12 @@
 
         .chat-box {
             display: none;
+            flex-direction: column;
             width: 350px;
             height: 450px;
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-            flex-direction: column;
             position: absolute;
             bottom: 70px;
             right: 0;
@@ -863,12 +863,13 @@
                         <a href="#">Spanish</a>
                         <a href="#">French</a>
                         <a href="#">German</a>
-                        <a href="#">Portuguese</a>                      
+                        <a href="#">Portuguese</a>
+                    </div>
                 </div>                  
             </div>
         </div>
-    </header>
-
+   </div>
+</header>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
@@ -1013,17 +1014,15 @@
                     <a href="https://www.instagram.com/willevy" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    </div>
+              </div>
                 <p style="margin-top: 15px; font-size: 14px; color: #ccc;">Follow William Levy on social media for the latest updates!</p>
             </div>
         </div>
-
         <div class="copyright">
             <p>&copy; 2025 William Levy Fan Platform. All rights reserved. | <a href="#" style="color: #ddd;">Privacy Policy</a> | <a href="#" style="color: #ddd;">Terms of Service</a></p>
         </div>
     </div>
-    </footer>
-            
+    </footer>      
     <!-- Membership Modal -->
     <div id="membershipModal" class="modal">
         <div class="modal-content">
@@ -1039,23 +1038,22 @@
                     <input type="hidden" name="form-type" value="Membership Request">
                     
                     <p>Select your preferred membership level:</p>
-                    
                     <div class="membership-options">
-                        <div class="membership-option" onclick="selectMembership('regular')">
+                        <div class="membership-option" onclick="selectMembership('regular', this)">
                             <h3>Regular Fan</h3>
                             <p>Basic benefits</p>
                             <div class="price">$499.99/year</div>
                             <input type="radio" name="membership-level" value="Regular Fan" style="display: none;" required>
                         </div>
                         
-                        <div class="membership-option" onclick="selectMembership('vip')">
+                        <div class="membership-option" onclick="selectMembership('vip', this)">
                             <h3>VIP Fan</h3>
                             <p>Extra benefits</p>
                             <div class="price">$699.99/year</div>
                             <input type="radio" name="membership-level" value="VIP Fan" style="display: none;" required>
                         </div>
                         
-                        <div class="membership-option" onclick="selectMembership('vvip')">
+                        <div class="membership-option" onclick="selectMembership('vvip', this)">
                             <h3>VVIP Fan</h3>
                             <p>All benefits</p>
                             <div class="price">$999.99/year</div>
@@ -1067,10 +1065,25 @@
                         <label for="fullName">Full Name</label>
                         <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
                     </div>
+
+                    <div class="form-group">
+                        <label for="phonenumber">Phone Number</label>
+                        <input type="text" id="phonenumber" name="phonenumber" class="form-control" placeholder="Enter your phone number" required maxlength="100">
+                    </div>
                     
                     <div class="form-group">
                         <label for="emailAddress">Email Address</label>
                         <input type="email" id="emailAddress" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
                     </div>
                     
                     <!-- Honeypot field for bots -->
@@ -1081,11 +1094,9 @@
                     
                     <!-- Formspree Status Message -->
                     <div class="formspree-status" id="membershipFormspreeStatus"></div>
-                    
                     <div class="success-message" id="membershipSuccessMessage">
                         You submitted a request and the management will contact you via email shortly, always check your email for notification from us. Thank you.
                     </div>
-                    
                     <button type="submit" class="btn" style="width: 100%;" id="membershipSubmit">Submit Your Request</button>
                 </form>
             </div>
@@ -1105,9 +1116,7 @@
                     <input type="hidden" name="_format" value="plain">
                     <input type="hidden" name="_language" value="en">
                     <input type="hidden" name="form-type" value="Meet & Greet Request">
-                    
                     <p>Select your preferred meet & greet package:</p>
-                    
                     <div class="form-group">
                         <label for="meetPackage">Package Type</label>
                         <select id="meetPackage" name="meetPackage" class="form-control" required>
@@ -1125,17 +1134,32 @@
                     
                     <div class="form-group">
                         <label for="specialRequests">Special Requests</label>
-                        <textarea id="specialRequests" name="specialRequests" class="form-control" rows="3" placeholder="Any special requests or requirements" maxlength="500"></textarea>
+                        <textarea id="specialRequests" name="specialRequests" class="form-control" rows="3" placeholder="Any special requests or requirements" maxlength="1500"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phonenumber">Phone Number</label>
+                        <input type="text" id="phonenumber" name="phonenumber" class="form-control" placeholder="Enter your phone number" required maxlength="100">
                     </div>
                     
                     <div class="form-group">
-                        <label for="meetFullName">Full Name</label>
-                        <input type="text" id="meetFullName" name="meetFullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                        <label for="emailAddress">Email Address</label>
+                        <input type="email" id="emailAddress" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
                     </div>
                     
                     <div class="form-group">
-                        <label for="meetEmail">Email Address</label>
-                        <input type="email" id="meetEmail" name="meetEmail" class="form-control" placeholder="Enter your email" required maxlength="254">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
                     </div>
                     
                     <!-- Honeypot field for bots -->
@@ -1568,7 +1592,6 @@
             setTimeout(() => {
                 // Simulate bot response
                 let response = "I understand you're having an issue. Our support team will contact you shortly.";
-                
                 if (question.includes('membership')) {
                     response = "For membership issues, please make sure you've filled all required fields and your informations are valid. Would you like to speak with a support agent?";
                 } else if (question.includes('Meet & Greet')) {
@@ -1608,11 +1631,9 @@
             messageElement.classList.add('message');
             messageElement.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
             messageElement.textContent = text;
-            
             chatMessages.appendChild(messageElement);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-        });
+         }
     </script>
 </body>
     </html>
