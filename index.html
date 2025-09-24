@@ -115,9 +115,13 @@
             color: var(--secondary);
         }
 
+        .language-selector {
+            position: relative;
+        }
+        
         .language-btn {
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             padding: 8px 15px;
             border-radius: 20px;
@@ -189,7 +193,7 @@
         
         .btn-primary:hover {
             background: #c62828;
-            }
+        }
 
         /* Hero Section */
         .hero {
@@ -214,7 +218,7 @@
             margin: 0 auto 30px;
         }
 
-        .btn {
+        .hero .btn {
             display: inline-block;
             background: var(--secondary);
             color: white;
@@ -228,7 +232,7 @@
             font-size: 16px;
         }
 
-        .btn:hover {
+        .hero .btn:hover {
             background: #c0392b;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -706,23 +710,24 @@
                     </ul>
                 </nav>
                 <div class="header-actions">
-                <div class="language-selector">
-                    <button class="language-btn">
-                        <i class="fas fa-globe"></i> EN
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="language-dropdown">
-                        <a href="#">English</a>
-                        <a href="#">Spanish</a>
-                        <a href="#">French</a>
-                        <a href="#">German</a>
-                        <a href="#">Portuguese</a>
-                    </div>
-                </div>                  
+                    <div class="language-selector">
+                        <button class="language-btn">
+                            <i class="fas fa-globe"></i> EN
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown">
+                            <a href="#">English</a>
+                            <a href="#">Spanish</a>
+                            <a href="#">French</a>
+                            <a href="#">German</a>
+                            <a href="#">Portuguese</a>
+                        </div>
+                    </div>                  
+                </div>
             </div>
         </div>
-   </div>
-</header>
+    </header>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
@@ -760,7 +765,7 @@
             <!-- Meet & Greet -->
             <div class="product-card" onclick="openModal('meetModal')">
                 <div class="product-image">
-                    <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/Meet and greet.jpg" alt="William Levy Meet & Greet" id="meetImage">
+                    <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/Meet%20and%20greet.jpg" alt="William Levy Meet & Greet" id="meetImage">
                 </div>
                 <div class="product-info">
                     <h3>Meet & Greet</h3>
@@ -838,44 +843,45 @@
 
     <!-- Footer -->
     <footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p>The official William Levy fan Platform offering exclusive access to memberships, and meet & greet experiences.</p>
-            </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>The official William Levy fan Platform offering exclusive access to memberships, and meet & greet experiences.</p>
+                </div>
 
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
 
-            <div class="footer-section">
-                <h3>Connect With Us</h3>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/share/1ADrKnn5mi/" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://x.com/willylevy29?s=09" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.instagram.com/willevy" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-              </div>
-                <p style="margin-top: 15px; font-size: 14px; color: #ccc;">Follow William Levy on social media for the latest updates!</p>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1ADrKnn5mi/" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/willylevy29?s=09" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/willevy" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 14px; color: #ccc;">Follow William Levy on social media for the latest updates!</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 William Levy Fan Platform. All rights reserved. | <a href="#" style="color: #ddd;">Privacy Policy</a> | <a href="#" style="color: #ddd;">Terms of Service</a></p>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2025 William Levy Fan Platform. All rights reserved. | <a href="#" style="color: #ddd;">Privacy Policy</a> | <a href="#" style="color: #ddd;">Terms of Service</a></p>
-        </div>
-    </div>
     </footer>      
+    
     <!-- Membership Modal -->
     <div id="membershipModal" class="modal">
         <div class="modal-content">
@@ -892,21 +898,21 @@
                     
                     <p>Select your preferred membership level:</p>
                     <div class="membership-options">
-                        <div class="membership-option" onclick="selectMembership('regular', this)">
+                        <div class="membership-option" onclick="selectMembership(this)">
                             <h3>Regular Fan</h3>
                             <p>Basic benefits</p>
                             <div class="price">$499.99/year</div>
                             <input type="radio" name="membership-level" value="Regular Fan" style="display: none;" required>
                         </div>
                         
-                        <div class="membership-option" onclick="selectMembership('vip', this)">
+                        <div class="membership-option" onclick="selectMembership(this)">
                             <h3>VIP Fan</h3>
                             <p>Extra benefits</p>
                             <div class="price">$699.99/year</div>
                             <input type="radio" name="membership-level" value="VIP Fan" style="display: none;" required>
                         </div>
                         
-                        <div class="membership-option" onclick="selectMembership('vvip', this)">
+                        <div class="membership-option" onclick="selectMembership(this)">
                             <h3>VVIP Fan</h3>
                             <p>All benefits</p>
                             <div class="price">$999.99/year</div>
@@ -915,28 +921,28 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                        <label for="membershipFullName">Full Name</label>
+                        <input type="text" id="membershipFullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
                     </div>
 
                     <div class="form-group">
-                        <label for="phonenumber">Phone Number</label>
-                        <input type="text" id="phonenumber" name="phonenumber" class="form-control" placeholder="Enter your phone number" required maxlength="100">
+                        <label for="membershipPhone">Phone Number</label>
+                        <input type="text" id="membershipPhone" name="phonenumber" class="form-control" placeholder="Enter your phone number" required maxlength="100">
                     </div>
                     
                     <div class="form-group">
-                        <label for="emailAddress">Email Address</label>
-                        <input type="email" id="emailAddress" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
+                        <label for="membershipEmail">Email Address</label>
+                        <input type="email" id="membershipEmail" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
                     </div>
 
                     <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" id="country" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
+                        <label for="membershipCountry">Country</label>
+                        <input type="text" id="membershipCountry" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
                     </div>
                     
                     <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
+                        <label for="membershipAddress">Address</label>
+                        <input type="text" id="membershipAddress" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
                     </div>
                     
                     <!-- Honeypot field for bots -->
@@ -982,7 +988,7 @@
                     
                     <div class="form-group">
                         <label for="meetDate">Preferred Date</label>
-                        <input type="date" id="meetDate" name="meetDate" class="form-control" min="<?php echo date('Y-m-d'); ?>">
+                        <input type="date" id="meetDate" name="meetDate" class="form-control" min="">
                     </div>
                     
                     <div class="form-group">
@@ -991,28 +997,28 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                        <label for="meetFullName">Full Name</label>
+                        <input type="text" id="meetFullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
                     </div>
 
                     <div class="form-group">
-                        <label for="phonenumber">Phone Number</label>
-                        <input type="text" id="phonenumber" name="phonenumber" class="form-control" placeholder="Enter your phone number" required maxlength="100">
+                        <label for="meetPhone">Phone Number</label>
+                        <input type="text" id="meetPhone" name="phonenumber" class="form-control" placeholder="Enter your phone number" required maxlength="100">
                     </div>
                     
                     <div class="form-group">
-                        <label for="emailAddress">Email Address</label>
-                        <input type="email" id="emailAddress" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
+                        <label for="meetEmail">Email Address</label>
+                        <input type="email" id="meetEmail" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
                     </div>
 
                     <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" id="country" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
+                        <label for="meetCountry">Country</label>
+                        <input type="text" id="meetCountry" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
                     </div>
                     
                     <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
+                        <label for="meetAddress">Address</label>
+                        <input type="text" id="meetAddress" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
                     </div>
                     
                     <!-- Honeypot field for bots -->
@@ -1037,8 +1043,6 @@
     <!-- Notification System -->
     <div class="notification" id="notification">
         New request submitted! Check your email for details.
-           </div>
-        </div>
     </div>
 
     <script>
@@ -1092,14 +1096,14 @@
         }
 
         // Membership selection
-        function selectMembership(level) {
+        function selectMembership(element) {
             const options = document.querySelectorAll('.membership-option');
             options.forEach(option => option.classList.remove('selected'));
             
-            event.currentTarget.classList.add('selected');
+            element.classList.add('selected');
             
             // Set the corresponding radio button as checked
-            const radioButton = event.currentTarget.querySelector('input[type="radio"]');
+            const radioButton = element.querySelector('input[type="radio"]');
             if (radioButton) {
                 radioButton.checked = true;
             }
@@ -1127,7 +1131,7 @@
             contact: { count: 0, lastSubmission: 0 },
             membership: { count: 0, lastSubmission: 0 },
             meet: { count: 0, lastSubmission: 0 }
-        });
+        };
 
         function checkRateLimit(formType) {
             const now = Date.now();
@@ -1262,7 +1266,10 @@
                         }
                     }
                 });
-            }
+            });
+        }
+
+        // Validate a single field
         function validateField(field) {
             let isValid = true;
             let errorMessage = '';
