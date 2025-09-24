@@ -1278,7 +1278,7 @@
             contact: { count: 0, lastSubmission: 0 },
             membership: { count: 0, lastSubmission: 0 },
             meet: { count: 0, lastSubmission: 0 }
-        };
+        });
 
         function checkRateLimit(formType) {
             const now = Date.now();
@@ -1413,9 +1413,7 @@
                         }
                     }
                 });
-            });
-        }
-
+            }
         function validateField(field) {
             let isValid = true;
             let errorMessage = '';
