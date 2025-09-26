@@ -1112,19 +1112,33 @@
                     <input type="hidden" name="_format" value="plain">
                     <input type="hidden" name="_language" value="en">
                     <input type="hidden" name="form-type" value="Meet & Greet Request">
+                    
                     <p>Select your preferred meet & greet package:</p>
-                    <div class="form-group">
-                        <label for="meetPackage">Package Type</label>
-                        <select id="meetPackage" name="meetPackage" class="form-control" required>
-                            <option value="">Select a package</option>
-                            <option value="standard">Standard Meet & Greet - $499.99</option>
-                            <option value="photo">Photo Experience - $699.99</option>
-                            <option value="ultimate">Ultimate Experience - $999.99</option>
-                        </select>
+                    <div class="meetPackage-option">
+                        <div class="meetPackage-option" onclick="selectMeetPackage(this)">
+                            <h3>Standard Meet & Greet</h3>
+                            <p>Basic benefits</p>
+                            <div class="price">$499.99/year</div>
+                            <input type="radio" name="meetPackage-option" value="Standard Meet and Greet" style="display: none;" required>
+                        </div>
+                        
+                        <div class="meetPackage-option" onclick="selectMeetPackage(this)">
+                            <h3>Photo Experience</h3>
+                            <p>Extra benefits</p>
+                            <div class="price">$699.99/year</div>
+                            <input type="radio" name="meetPackage" value="Photo Experience" style="display: none;" required>
+                        </div>
+                        
+                        <div class="meetPackage-option" onclick="selectMeetPackage(this)">
+                            </h3>Ultimate Experience</h3>
+                            <p>All benefits</p>
+                            <div class="price">$999.99/year</div>
+                            <input type="radio" name="meetPackage" value="Ultimate Experience" style="display: none;" required>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="meetDate">Preferred Date</label>
+                        <label for="meetDate">Enter Preferred Meeting Date</label>
                         <input type="date" id="meetDate" name="meetDate" class="form-control" min="">
                     </div>
                     
