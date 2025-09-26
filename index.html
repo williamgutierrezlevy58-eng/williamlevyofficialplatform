@@ -1329,6 +1329,20 @@
             }
         }
 
+            // Meet & Greet selection
+        function selectMembership(element) {
+            const options = document.querySelectorAll('.membership-option');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            element.classList.add('selected');
+        
+            // Set the corresponding radio button as checked
+            const radioButton = element.querySelector('input[type="radio"]');
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+        }
+
         // Advanced input validation
         function validateName(name) {
             const nameRegex = /^[a-zA-Z\s]{2,100}$/;
@@ -1461,10 +1475,10 @@
             notification.className = type === 'error' ? 'notification error' : 'notification';
             notification.style.display = 'block';
             
-            // Hide notification after 5 seconds
+            // Hide notification after 10 seconds
             setTimeout(() => {
                 notification.style.display = 'none';
-            }, 5000);
+            }, 10000);
         }
 
         // Real-time form validation
