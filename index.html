@@ -737,14 +737,14 @@ Isn't the story interesting?on" content="1; mode=block">
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="language-dropdown">
-							<a href="#" onclick="setLanguage('pt')">Arabic</a>
-							<a href="#" onclick="setLanguage('pt')">Chinese (Simplified)</a>
+							<a href="#" onclick="setLanguage('ar')">Arabic</a>
+							<a href="#" onclick="setLanguage('cn')">Chinese (Simplified)</a>
                             <a href="#" onclick="setLanguage('en')">English</a>
-                            <a href="#" onclick="setLanguage('es')">French</a>
-                            <a href="#" onclick="setLanguage('fr')">German</a>
+                            <a href="#" onclick="setLanguage('fr')">French</a>
+                            <a href="#" onclick="setLanguage('de')">German</a>
 							<a href="#" onclick="setLanguage('pt')">Portuguese</a>
-							<a href="#" onclick="setLanguage('pt')">Russian</a>
-                            <a href="#" onclick="setLanguage('de')">Spanish</a>
+							<a href="#" onclick="setLanguage('ru')">Russian</a>
+                            <a href="#" onclick="setLanguage('es')">Spanish</a>
                         </div>
                     </div>                  
                 </div>
@@ -896,6 +896,8 @@ Isn't the story interesting?on" content="1; mode=block">
                         <a href="https://www.instagram.com/willevy" target="_blank" rel="noopener noreferrer" aria-label="Follow William Levy on Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
+						<a href="https://www.tiktok.com/@willlevy29_?_t=ZS-9059tQwjqCX&_r=1"<i class="fab fa-tiktok"></i>
+						</a>
                     </div>
                     <p style="margin-top: 15px; font-size: 14px; color: #ccc;" id="footerFollowText">Follow William Levy on social media for the latest updates!</p>
                 </div>
@@ -1290,7 +1292,7 @@ Isn't the story interesting?on" content="1; mode=block">
                 // Notification
                 "notificationText": "¡Nueva solicitud enviada! Revisa tu correo electrónico para más detalles."
             },
-            cn: {
+            chin: {
                 // Navigation
                 "navHome": "首页",
 				"navAbout": "关于",
@@ -2009,8 +2011,8 @@ Isn't the story interesting?on" content="1; mode=block">
                 return primaryLang;
             }
             
-            // Default to English
-            return 'en';
+            // Default to Spanish
+            return 'es';
         }
 
         // Initialize language on page load
@@ -2193,13 +2195,13 @@ Isn't the story interesting?on" content="1; mode=block">
                     // Reset form
                     form.reset();
                     
-                    // Close modal after 3 seconds
+                    // Close modal after 10 seconds
                     setTimeout(() => {
                         const modal = form.closest('.modal');
                         if (modal) {
                             closeModal(modal.id);
                         }
-                    }, 3000);
+                    }, 10000);
                 } else {
                     response.json().then(data => {
                         if (Object.hasOwn(data, 'errors')) {
@@ -2234,10 +2236,10 @@ Isn't the story interesting?on" content="1; mode=block">
             notification.className = type === 'error' ? 'notification error' : 'notification';
             notification.style.display = 'block';
             
-            // Hide notification after 5 seconds
+            // Hide notification after 15 seconds
             setTimeout(() => {
                 notification.style.display = 'none';
-            }, 5000);
+            }, 15000);
         }
 
         // Real-time form validation
