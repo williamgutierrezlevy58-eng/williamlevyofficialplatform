@@ -86,6 +86,14 @@ Isn't the story interesting?on" content="1; mode=block">
             gap: 10px;
         }
 
+		/* Title color split: Alejandro = red, Sanz = white */
+		#siteTitle .site-first {
+  			color: var(--secondary); /* uses your existing red variable (#e74c3c) */
+		}
+		#siteTitle .site-last {
+  			color: #ffffff; /* white */
+		}
+
         .logo span {
             color: var(--secondary);
         }
@@ -851,7 +859,10 @@ Isn't the story interesting?on" content="1; mode=block">
             <div class="header-content">
                 <div class="logo">
                     <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/Logo.jpg" alt="William Levy Logo" id="logoImage">
-                    <span id="siteTitle">William <span>Levy</span></span>
+                     <span id="siteTitle">
+						<span class="site-first">Alejandro</span>
+						<span class="site-last">Sanz</span>
+					</span>
                     </div>
                 <nav>
                     <ul>
