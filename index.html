@@ -86,7 +86,7 @@ Isn't the story interesting?on" content="1; mode=block">
             gap: 10px;
         }
 
-		/* Title color split: Alejandro = red, Sanz = white */
+		/* Title color split: William = red, Levy = white */
 		#siteTitle .site-first {
   			color: var(--secondary); /* uses your existing red variable (#e74c3c) */
 		}
@@ -499,7 +499,7 @@ Isn't the story interesting?on" content="1; mode=block">
         
         .about-text {
             flex: 1;
-            color: var(--primary)
+            color: var(--primary);
         }
         
         .about-text h3 {
@@ -2341,18 +2341,18 @@ Isn't the story interesting?on" content="1; mode=block">
 
         // Advanced input validation
         function validateName(name) {
-            const nameRegex = /^[a-zA-Z\s]{2,100}€/;
+            const nameRegex = /^[a-zA-Z\s]{2,100}$/;
             return nameRegex.test(name.trim());
         }
 
         function validateEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+€/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
 
         function validatePhone(phone) {
             if (!phone) return true; // Phone is optional
-            const phoneRegex = /^[\+]?[1-9][\d]{0,15}€/;
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
             return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
         }
 
