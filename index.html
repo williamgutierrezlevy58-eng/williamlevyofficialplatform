@@ -969,7 +969,7 @@
             
             <div class="form-group">
                 <label for="name" id="nameLabel">Full Name</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required maxlength="500">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required maxlength="500" pattern="[a-zA-Z\s\-àáâãäåèéêëìíîïòóôõöùúûüçñ]+" title="Please use letters, spaces, hyphens, and accents">
                 <div class="error-message" id="nameError">Please enter a valid name</div>
             </div>
 
