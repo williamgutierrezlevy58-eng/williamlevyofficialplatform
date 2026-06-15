@@ -19,8 +19,7 @@
     ">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-ProtectiSorry about that, but why didn't he pay attention to you? 
-Isn't the story interesting?on" content="1; mode=block">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="robots" content="index, follow">
     
@@ -971,7 +970,7 @@ Isn't the story interesting?on" content="1; mode=block">
             <div class="form-group">
                 <label for="name" id="nameLabel">Full Name</label>
                 <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required maxlength="100">
-                <div class="error-message" id="nameError">Please enter a valid name (letters and spaces only, max 100 characters)</div>
+                <div class="error-message" id="nameError">Please enter a valid name</div>
             </div>
 
             <div class="form-group">
@@ -997,7 +996,93 @@ Isn't the story interesting?on" content="1; mode=block">
         </form>
     </section>
 </body>
+    <script>
+        // Form validation handler
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
 
+        // Real-time validation for name field
+        nameInput.addEventListener('input', validateName);
+        nameInput.addEventListener('blur', validateName);
+
+        function validateName() {
+            const name = nameInput.value.trim();
+            
+            // Accept any non-empty name (minimum 2 characters)
+            if (name.length >= 2) {
+                nameInput.classList.remove('error');
+                nameError.style.display = 'none';
+                return true;
+            } else if (name.length > 0) {
+                nameInput.classList.add('error');
+                nameError.textContent = 'Name must be at least 2 characters';
+                nameError.style.display = 'block';
+                return false;
+            } else {
+                nameInput.classList.add('error');
+                nameError.textContent = 'Please enter your name';
+                nameError.style.display = 'block';
+                return false;
+            }
+        }
+
+        // Real-time validation for email field
+        emailInput.addEventListener('input', validateEmail);
+        emailInput.addEventListener('blur', validateEmail);
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (emailRegex.test(email)) {
+                emailInput.classList.remove('error');
+                emailError.style.display = 'none';
+                return true;
+            } else if (email.length > 0) {
+                emailInput.classList.add('error');
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.display = 'block';
+                return false;
+            } else {
+                emailInput.classList.add('error');
+                emailError.textContent = 'Email is required';
+                emailError.style.display = 'block';
+                return false;
+            }
+        }
+
+        // Form submission handler
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate before submission
+            const nameValid = validateName();
+            const emailValid = validateEmail();
+            
+            if (!nameValid || !emailValid) {
+                return false;
+            }
+
+            // Check honeypot
+            const honeypot = document.getElementById('website').value;
+            if (honeypot.length > 0) {
+                console.log('Bot detected');
+                return false;
+            }
+
+            // Submit the form
+            contactForm.submit();
+        });
+
+        // Language switching function
+        function setLanguage(lang) {
+            console.log('Language changed to:', lang);
+            // Add your language switching logic here
+        }
+	</script>
     <!-- Footer -->
     <footer>
         <div class="container">
