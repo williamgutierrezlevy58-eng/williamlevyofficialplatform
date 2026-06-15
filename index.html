@@ -1341,6 +1341,73 @@
 
     <script>
         // Language Support
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function selectMembership(element) {
+    const container = element.closest('.membership-options');
+    const allOptions = container.querySelectorAll('.membership-option');
+    allOptions.forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    const radio = element.querySelector('input[type="radio"]');
+    if (radio) radio.checked = true;
+}
+
+function selectMeetPackage(element, packageType) {
+    const container = element.closest('.membership-options');
+    const allOptions = container.querySelectorAll('.membership-option');
+    allOptions.forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    const radio = element.querySelector('input[type="radio"]');
+    if (radio) radio.checked = true;
+    element.dataset.selectedPackage = packageType;
+}
+
+window.onclick = function(event) {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// Optional: Prevent empty submission
+const membershipForm = document.getElementById('membershipForm');
+if (membershipForm) {
+    membershipForm.addEventListener('submit', function(e) {
+        const selectedRadio = document.querySelector('input[name="membership-level"]:checked');
+        if (!selectedRadio) {
+            e.preventDefault();
+            alert('Please select a membership level (Regular, VIP, or VVIP).');
+        }
+    });
+}
+
+const meetForm = document.getElementById('meetForm');
+if (meetForm) {
+    meetForm.addEventListener('submit', function(e) {
+        const selectedRadio = document.querySelector('input[name="meetPackage"]:checked');
+        if (!selectedRadio) {
+            e.preventDefault();
+            alert('Please select a meet & greet package.');
+        }
+    });
+}
         const translations = {
             en: {
                 // Navigation
