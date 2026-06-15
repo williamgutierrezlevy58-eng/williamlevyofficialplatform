@@ -2426,7 +2426,7 @@
         }
 
         // Advanced input validation
-		function validateName(name) { // allow Unicode letters and combining marks, spaces, hyphens and apostrophes; length 2–500 
+		function validateName(name) {
 			const nameRegex = /^[\p{L}\p{M}'’-\s]{2,500}$/u;
 			return nameRegex.test(name.trim()); }
         }
