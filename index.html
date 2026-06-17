@@ -2267,19 +2267,19 @@
             console = { log: function() {} };
         }
 
-        // Security: Disable right-click context menu to prevent image theft
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            showNotification('Right-click is disabled for security reasons.');
-        });
-
         // Security: Disable text selection on sensitive elements
         document.addEventListener('selectstart', function(e) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                return; // Allow selection in form fields
-            }
-            e.preventDefault();
-        });
+			if (e.target.tagName === 'INPUT' || 
+				e.target.tagName === 'TEXTAREA' ||
+				e.target.closest('.product-card') ||
+				e.target.closest('.modal') ||
+				e.target.closest('button') ||
+				e.target.closest('a') ||
+				e.target.closest('nav')) {
+			    return;
+   }
+    e.preventDefault();
+});
 
         // Security: Detect and block common hacking tools
         const blockedKeywords = ['webscarab', 'burp', 'sqlmap', 'nmap', 'metasploit'];
@@ -2475,8 +2475,20 @@
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 15000);
-        }
+		}
 
+		// Security: Disable right-click context menu to prevent image theft
+		document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    const notification = document.getElementById('notification');
+    if (notification) {
+        notification.textContent = 'Right-click is disabled for security reasons.';
+        notification.className = 'notification';
+        notification.style.display = 'block';
+        setTimeout(() => { notification.style.display = 'none'; }, 15000);
+    }
+});
+		
         // Real-time form validation
         function setupFormValidation(form) {
             const inputs = form.querySelectorAll('input, textarea, select');
@@ -2686,7 +2698,7 @@
         let suspiciousActivityCount = 0;
         window.addEventListener('error', function(e) {
             suspiciousActivityCount++;
-            if (suspiciousActivityCount > 10) {
+            if (suspiciousActivityCount > 50) {
                 // Too many errors, possible attack
                 document.body.innerHTML = '<h1>Security Alert</h1><p>Unusual activity detected. Please refresh the page.</p>';
             }
