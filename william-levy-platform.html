@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Levy - Official Fan Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+
+        body { background-color: #f8f9fa; color: #333; line-height: 1.6; }
+
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            color: white; padding: 15px 0; position: sticky; top: 0;
+            z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 75px; border-radius: 30%; object-fit: cover; }
+        #siteTitle .site-first { color: var(--secondary); }
+        #siteTitle .site-last { color: #ffffff; }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 17px; }
+        nav ul li a:hover { color: var(--secondary); }
+
+        .language-selector { position: relative; }
+        .language-btn {
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+            color: white; padding: 8px 15px; border-radius: 20px;
+            display: flex; align-items: center; cursor: pointer; transition: background 0.3s; gap: 5px;
+        }
+        .language-dropdown {
+            display: none; position: absolute; top: 100%; right: 0;
+            background: white; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            width: 150px; padding: 10px 0; margin-top: 5px; z-index: 200;
+        }
+        .language-dropdown a { display: block; padding: 8px 15px; color: var(--dark); text-decoration: none; transition: background 0.3s; }
+        .language-dropdown a:hover { background: #f0f0f0; }
+        .language-selector:hover .language-dropdown { display: block; }
+
+        /* Buttons */
+        .btn {
+            background: var(--secondary); color: white; padding: 8px 20px;
+            border-radius: 20px; border: none; cursor: pointer;
+            font-weight: 500; transition: all 0.3s; display: inline-block;
+            text-decoration: none; font-size: 15px;
+        }
+        .btn:hover { background: #c0392b; transform: translateY(-2px); }
+        .btn:disabled { background: #cccccc; cursor: not-allowed; transform: none; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/willevy.jpg');
+            background-size: cover; background-position: center;
+            color: white; text-align: center; padding: 100px 20px; margin-bottom: 40px;
+        }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 20px; max-width: 700px; margin: 0 auto 30px; }
+        .hero .btn { padding: 12px 25px; border-radius: 30px; font-size: 16px; font-weight: 600; }
+        .hero .btn:hover { background: #c0392b; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* Section title */
+        .section-title {
+            text-align: center; margin-bottom: 40px; color: var(--dark);
+            font-size: 36px; position: relative; padding-bottom: 15px;
+        }
+        .section-title:after {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            transform: translateX(-50%); width: 80px; height: 4px; background: var(--secondary);
+        }
+
+        /* Products */
+        .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .product-card {
+            background: white; border-radius: 10px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .product-image { height: 200px; overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; pointer-events: none; }
+        .product-card:hover .product-image img { transform: scale(1.1); }
+        .product-info { padding: 20px; }
+        .product-info h3 { font-size: 22px; margin-bottom: 10px; color: var(--dark); }
+        .product-info p { color: #666; margin-bottom: 15px; }
+        .product-price { font-size: 24px; font-weight: 700; color: var(--secondary); margin-bottom: 15px; }
+
+        /* Forms */
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--dark); }
+        .form-control {
+            width: 100%; padding: 12px 15px; border: 1px solid #ddd;
+            border-radius: 5px; font-size: 16px; transition: border-color 0.3s;
+        }
+        .form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(52,152,219,0.2); }
+        .form-control.error { border-color: var(--secondary); }
+        .error-message { color: var(--secondary); font-size: 14px; margin-top: 5px; display: none; }
+
+        /* ===================== MODAL STYLES ===================== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 9000;
+            overflow-y: auto;
+        }
+        /* When modal is open, show it as flex so content centers */
+        .modal.is-open {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 15px;
+        }
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            animation: modalFade 0.3s;
+            position: relative;
+        }
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .modal-header {
+            padding: 20px; border-bottom: 1px solid #eee;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .modal-header h2 { color: var(--dark); font-size: 24px; }
+        .close-modal {
+            font-size: 28px; cursor: pointer; color: #999;
+            transition: color 0.3s; line-height: 1;
+            background: none; border: none; padding: 0 5px;
+        }
+        .close-modal:hover { color: var(--secondary); }
+        .modal-body { padding: 20px; }
+        /* ========================================================= */
+
+        .membership-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .membership-option { border: 2px solid #ddd; border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.3s; }
+        .membership-option:hover { border-color: var(--accent); }
+        .membership-option.selected { border-color: var(--secondary); background: rgba(231,76,60,0.1); }
+        .membership-option h3 { font-size: 18px; margin-bottom: 10px; color: var(--dark); }
+        .membership-option .price { font-size: 20px; font-weight: 700; color: var(--secondary); }
+
+        /* About */
+        .about { padding: 80px 0; background: #f9f9f9; }
+        .about-content { display: flex; align-items: center; gap: 40px; }
+        .about-image { flex: 1; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .about-image img { width: 100%; height: auto; display: block; }
+        .about-text { flex: 1; color: var(--primary); }
+        .about-text h3 { font-size: 2rem; margin-bottom: 20px; color: var(--secondary); }
+        .about-text p { margin-bottom: 12px; }
+
+        /* Security notice */
+        .security-notice {
+            background: #f8f9fa; border-left: 4px solid var(--accent);
+            padding: 15px; margin: 20px 0; border-radius: 4px; font-size: 14px;
+        }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 40px 0; margin-top: 60px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .footer-section h3 { font-size: 20px; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        .footer-section h3:after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 3px; background: var(--secondary); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--secondary); }
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a {
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; color: white; transition: all 0.3s;
+        }
+        .social-icons a:hover { background: var(--secondary); transform: translateY(-3px); }
+        .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        /* Success / Status */
+        .success-message { display: none; background: var(--success); color: white; padding: 15px; border-radius: 5px; margin: 20px 0; text-align: center; }
+        .notification {
+            position: fixed; top: 20px; right: 20px; background: var(--success);
+            color: white; padding: 15px 25px; border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 9999;
+            display: none; max-width: 300px;
+        }
+        .notification.error { background: var(--secondary); }
+        .formspree-status { padding: 10px; border-radius: 5px; margin: 10px 0; text-align: center; display: none; }
+        .formspree-status.success { background: var(--success); color: white; }
+        .formspree-status.error { background: var(--secondary); color: white; }
+
+        /* Security Badge */
+        .security-badge {
+            position: fixed; bottom: 20px; left: 20px; background: var(--primary);
+            color: white; padding: 10px 15px; border-radius: 5px;
+            font-size: 12px; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Lang switch */
+        .lang-switch {
+            position: fixed; bottom: 60px; right: 20px; background: var(--primary);
+            color: white; padding: 10px 15px; border-radius: 5px;
+            font-size: 14px; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); cursor: pointer;
+        }
+
+        /* Chat widget */
+        .chat-widget-container { position: fixed; bottom: 24px; right: 24px; z-index: 9998; }
+        .chat-widget-button {
+            width: 60px; height: 60px; background: #e74c3c; border: none;
+            border-radius: 50%; color: #fff; font-size: 28px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.18); transition: background 0.2s;
+        }
+        .chat-widget-button:hover { background: #c0392b; }
+        .chat-widget-box {
+            display: none; flex-direction: column; width: 350px; height: 470px;
+            background: #fff; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+            position: absolute; bottom: 70px; right: 0; overflow: hidden;
+        }
+        .chat-widget-header {
+            background: linear-gradient(to right, #2c3e50, #1a242f);
+            color: #fff; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .chat-widget-header h3 { margin: 0; font-size: 17px; font-weight: 500; }
+        .chat-widget-close { cursor: pointer; font-size: 22px; }
+        .chat-widget-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f5f5f5; }
+        .chat-widget-message { max-width: 80%; padding: 10px 16px; border-radius: 17px; line-height: 1.5; font-size: 15px; }
+        .chat-widget-message.bot { background: #f1f1f1; align-self: flex-start; border-top-left-radius: 4px; }
+        .chat-widget-message.user { background: #3498db; color: #fff; align-self: flex-end; border-top-right-radius: 4px; }
+        .chat-widget-input-bar { display: flex; padding: 12px; border-top: 1px solid #ececec; background: #fff; }
+        .chat-widget-input-bar input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 18px; outline: none; font-size: 15px; }
+        .chat-widget-input-bar button { margin-left: 10px; background: #e74c3c; color: #fff; border: none; border-radius: 18px; padding: 0 16px; font-size: 18px; cursor: pointer; }
+        .chat-widget-quick-questions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .chat-widget-quick-question { padding: 7px 12px; background: #f1f1f1; border-radius: 15px; font-size: 13px; cursor: pointer; transition: background 0.2s; }
+        .chat-widget-quick-question:hover { background: #e1e1e1; }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            nav ul { margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+            nav ul li { margin: 0 10px 10px 10px; }
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
+            .section-title { font-size: 28px; }
+            .about-content { flex-direction: column; }
+            .chat-widget-box { width: 98vw; right: -6px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Security Badge -->
+<div class="security-badge">
+    <i class="fas fa-shield-alt"></i> <span id="secureText">Secure Connection</span>
+</div>
+
+<!-- Language Switch -->
+<div class="lang-switch" id="langSwitch">
+    <i class="fas fa-language"></i> <span id="currentLang">EN</span>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/Logo.jpg" alt="William Levy Logo" id="logoImage">
+                <span id="siteTitle">
+                    <span class="site-first">William</span>
+                    <span class="site-last"> Levy</span>
+                </span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" id="navHome">Home</a></li>
+                    <li><a href="#about" id="navAbout">About</a></li>
+                    <li><a href="#products" id="navProducts">Products</a></li>
+                    <li><a href="#contact" id="navContact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="languageBtn">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLangDisplay">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="#" onclick="setLanguage('ar'); return false;">Arabic</a>
+                        <a href="#" onclick="setLanguage('cn'); return false;">Chinese</a>
+                        <a href="#" onclick="setLanguage('en'); return false;">English</a>
+                        <a href="#" onclick="setLanguage('fr'); return false;">French</a>
+                        <a href="#" onclick="setLanguage('de'); return false;">German</a>
+                        <a href="#" onclick="setLanguage('el'); return false;">Greek</a>
+                        <a href="#" onclick="setLanguage('it'); return false;">Italian</a>
+                        <a href="#" onclick="setLanguage('pt'); return false;">Portuguese</a>
+                        <a href="#" onclick="setLanguage('ru'); return false;">Russian</a>
+                        <a href="#" onclick="setLanguage('es'); return false;">Spanish</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1 id="heroTitle1">Welcome To</h1>
+        <h1 id="heroTitle2">William Levy Official Fan Platform</h1>
+        <p id="heroDescription">Get exclusive access to fan memberships, and meet &amp; greet opportunities with William Levy himself!</p>
+        <a href="#products" class="btn" id="heroButton">Explore Offers</a>
+    </div>
+</section>
+
+<!-- Security Notice -->
+<div class="container">
+    <div class="security-notice">
+        <strong><i class="fas fa-shield-alt"></i> <span id="securityNoticeTitle">Security Notice:</span></strong>
+        <span id="securityNoticeText">This website uses advanced security measures to protect your data. All form submissions are encrypted and monitored for suspicious activity.</span>
+    </div>
+</div>
+
+<!-- Products Section -->
+<section id="products" class="container">
+    <h2 class="section-title" id="productsTitle">Exclusive Fan Offers</h2>
+    <div class="products">
+
+        <!-- Fan Membership Card -->
+        <div class="product-card" onclick="openModal('membershipModal')">
+            <div class="product-image">
+                <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/Card.jpg" alt="Fan Membership" id="membershipImage">
+            </div>
+            <div class="product-info">
+                <h3 id="membershipTitle">Fan Membership</h3>
+                <p id="membershipDescription">Join the exclusive fan club for special perks, discounts, and exclusive content.</p>
+                <div class="product-price" id="membershipPrice">From €499.99/year</div>
+                <button type="button" class="btn" id="membershipButton" onclick="openModal('membershipModal'); event.stopPropagation();">Apply Now</button>
+            </div>
+        </div>
+
+        <!-- Meet & Greet Card -->
+        <div class="product-card" onclick="openModal('meetModal')">
+            <div class="product-image">
+                <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/Meet%20and%20greet.jpg" alt="Meet &amp; Greet" id="meetImage">
+            </div>
+            <div class="product-info">
+                <h3 id="meetTitle">Meet &amp; Greet</h3>
+                <p id="meetDescription">Get the chance to meet William Levy personally. A once-in-a-lifetime experience!</p>
+                <div class="product-price" id="meetPrice">From €1499.99</div>
+                <button type="button" class="btn" id="meetButton" onclick="openModal('meetModal'); event.stopPropagation();">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+    <div class="container about-content">
+        <div class="about-image">
+            <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/williamlevyofficialplatform/main/Williamlevy.jpg" alt="William Levy" id="aboutImage">
+        </div>
+        <div class="about-text">
+            <h3 id="aboutTitle">About William Levy</h3>
+            <p id="aboutText1">William Levy is a Cuban-American actor and model known for his work in telenovelas and Hollywood films. He gained international recognition for his roles in "Triunfo del Amor" and "La Tempestad".</p>
+            <p id="aboutText2">With his charismatic personality and talent, William has amassed a huge global fanbase. This official website is the perfect place for fans to connect, get updates, and access exclusive experiences.</p>
+            <p id="aboutText3">Join thousands of fans worldwide in supporting this incredible artist!</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact / Newsletter Section -->
+<section id="contact" class="container">
+    <h2 class="section-title" id="contactTitle">Subscribe To Our Newsletters</h2>
+    <form id="contactForm" class="modal-body" style="max-width:800px; margin:0 auto;" action="https://formspree.io/f/xqayzokg" method="POST">
+        <input type="hidden" name="_subject" value="New Newsletter Subscription">
+        <input type="hidden" name="form-type" value="Newsletter">
+
+        <div class="form-group">
+            <label for="name" id="nameLabel">Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required maxlength="100">
+            <div class="error-message" id="nameError">Please enter a valid name</div>
+        </div>
+
+        <div class="form-group">
+            <label for="email" id="emailLabel">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required maxlength="254">
+            <div class="error-message" id="emailError">Please enter a valid email address</div>
+        </div>
+
+        <!-- Honeypot -->
+        <div style="display:none;">
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="formspree-status" id="formspreeStatus"></div>
+        <div class="success-message" id="successMessage">
+            <span id="successText">You Have Successfully Subscribed To Newsletters. Thank You!</span>
+        </div>
+
+        <button type="submit" class="btn" style="width:100%;" id="contactSubmit">Join Our Newsletters</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 id="footerAboutTitle">About Us</h3>
+                <p id="footerAboutText">The official William Levy fan Platform offering exclusive access to memberships, and meet &amp; greet experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3 id="footerLinksTitle">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home" id="footerHome">Home</a></li>
+                    <li><a href="#about" id="footerAbout">About</a></li>
+                    <li><a href="#products" id="footerProducts">Products</a></li>
+                    <li><a href="#contact" id="footerContact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 id="footerConnectTitle">Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/1ADrKnn5mi/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/willylevy29?s=09" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/willevy" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@willlevy29_?_t=ZS-9059tQwjqCX&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <p style="margin-top:15px; font-size:14px; color:#ccc;" id="footerFollowText">Follow William Levy on social media for the latest updates!</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p id="copyrightText">&copy; 2026 William Levy Fan Platform. All rights reserved. |
+                <a href="#" style="color:#ddd;">Privacy Policy</a> |
+                <a href="#" style="color:#ddd;">Terms of Service</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- ==================== MEMBERSHIP MODAL ==================== -->
+<div id="membershipModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="membershipModalTitle">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="membershipModalTitle">Fan Membership</h2>
+            <button class="close-modal" onclick="closeModal('membershipModal')" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="membershipForm" action="https://formspree.io/f/xqayzokg" method="POST">
+                <input type="hidden" name="_subject" value="New Membership Request">
+                <input type="hidden" name="form-type" value="Membership Request">
+
+                <p id="membershipSelectText" style="margin-bottom:15px;">Select your preferred membership level:</p>
+                <div class="membership-options">
+                    <div class="membership-option" onclick="selectMembership(this)">
+                        <h3 id="regularFanTitle">Regular Fan</h3>
+                        <p id="regularFanDesc">Basic benefits</p>
+                        <div class="price">€499.99/year</div>
+                        <input type="radio" name="membership-level" value="Regular Fan" style="display:none;" required>
+                    </div>
+                    <div class="membership-option" onclick="selectMembership(this)">
+                        <h3 id="vipFanTitle">VIP Fan</h3>
+                        <p id="vipFanDesc">Extra benefits</p>
+                        <div class="price">€699.99/year</div>
+                        <input type="radio" name="membership-level" value="VIP Fan" style="display:none;" required>
+                    </div>
+                    <div class="membership-option" onclick="selectMembership(this)">
+                        <h3 id="vvipFanTitle">VVIP Fan</h3>
+                        <p id="vvipFanDesc">All benefits</p>
+                        <div class="price">€999.99/year</div>
+                        <input type="radio" name="membership-level" value="VVIP Fan" style="display:none;" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="membershipFullName" id="membershipNameLabel">Full Name</label>
+                    <input type="text" id="membershipFullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="membershipPhone" id="membershipPhoneLabel">Phone Number</label>
+                    <input type="tel" id="membershipPhone" name="phonenumber" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="membershipEmail" id="membershipEmailLabel">Email Address</label>
+                    <input type="email" id="membershipEmail" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
+                </div>
+                <div class="form-group">
+                    <label for="fanYear" id="fanYearLabel">What Year Did You Become A Fan</label>
+                    <input type="number" id="fanYear" name="fanYear" class="form-control" placeholder="e.g. 2010" min="1990" max="2026" required>
+                </div>
+                <div class="form-group">
+                    <label for="membershipCountry" id="membershipCountryLabel">Country</label>
+                    <input type="text" id="membershipCountry" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
+                </div>
+                <div class="form-group">
+                    <label for="membershipAddress" id="membershipAddressLabel">Address</label>
+                    <input type="text" id="membershipAddress" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
+                </div>
+
+                <!-- Honeypot -->
+                <div style="display:none;"><input type="text" name="url" tabindex="-1" autocomplete="off"></div>
+
+                <div class="formspree-status" id="membershipFormspreeStatus"></div>
+                <div class="success-message" id="membershipSuccessMessage">
+                    <span id="membershipSuccessText">Your request has been submitted! We will contact you via email shortly. Thank you.</span>
+                </div>
+                <button type="submit" class="btn" style="width:100%;" id="membershipSubmit">Submit Your Request</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== MEET & GREET MODAL ==================== -->
+<div id="meetModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="meetModalTitle">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="meetModalTitle">Meet &amp; Greet</h2>
+            <button class="close-modal" onclick="closeModal('meetModal')" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="meetForm" action="https://formspree.io/f/xqayzokg" method="POST">
+                <input type="hidden" name="_subject" value="New Meet &amp; Greet Request">
+                <input type="hidden" name="form-type" value="Meet &amp; Greet Request">
+
+                <p id="meetSelectText" style="margin-bottom:15px;">Select your preferred meet &amp; greet package:</p>
+                <div class="membership-options">
+                    <div class="membership-option" onclick="selectMeetPackage(this)">
+                        <h3 id="standardMeetTitle">Standard</h3>
+                        <p id="standardMeetDesc">Basic experience</p>
+                        <div class="price">€1499.99</div>
+                        <input type="radio" name="meetPackage" value="Standard" style="display:none;" required>
+                    </div>
+                    <div class="membership-option" onclick="selectMeetPackage(this)">
+                        <h3 id="photoMeetTitle">Photo Experience</h3>
+                        <p id="photoMeetDesc">Includes photo session</p>
+                        <div class="price">€1999.99</div>
+                        <input type="radio" name="meetPackage" value="Photo Experience" style="display:none;" required>
+                    </div>
+                    <div class="membership-option" onclick="selectMeetPackage(this)">
+                        <h3 id="ultimateMeetTitle">Ultimate</h3>
+                        <p id="ultimateMeetDesc">VIP with all benefits</p>
+                        <div class="price">€2999.99</div>
+                        <input type="radio" name="meetPackage" value="Ultimate" style="display:none;" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="meetDate" id="meetDateLabel">Preferred Meeting Date</label>
+                    <input type="date" id="meetDate" name="meetDate" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="specialRequests" id="specialRequestsLabel">Special Requests</label>
+                    <textarea id="specialRequests" name="specialRequests" class="form-control" rows="3" placeholder="Any special requests or requirements" maxlength="1500"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="meetFanYear" id="meetFanYearLabel">What Year Did You Become A Fan</label>
+                    <input type="number" id="meetFanYear" name="fanYear" class="form-control" placeholder="e.g. 2010" min="1990" max="2026" required>
+                </div>
+                <div class="form-group">
+                    <label for="meetFullName" id="meetFullNameLabel">Full Name</label>
+                    <input type="text" id="meetFullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="meetPhone" id="meetPhoneLabel">Phone Number</label>
+                    <input type="tel" id="meetPhone" name="phonenumber" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="meetEmail" id="meetEmailLabel">Email Address</label>
+                    <input type="email" id="meetEmail" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
+                </div>
+                <div class="form-group">
+                    <label for="meetCountry" id="meetCountryLabel">Country</label>
+                    <input type="text" id="meetCountry" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
+                </div>
+                <div class="form-group">
+                    <label for="meetAddress" id="meetAddressLabel">Address</label>
+                    <input type="text" id="meetAddress" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
+                </div>
+
+                <!-- Honeypot -->
+                <div style="display:none;"><input type="text" name="homepage" tabindex="-1" autocomplete="off"></div>
+
+                <div class="formspree-status" id="meetFormspreeStatus"></div>
+                <div class="success-message" id="meetSuccessMessage">
+                    <span id="meetSuccessText">Your request has been submitted! We will contact you via email shortly. Thank you.</span>
+                </div>
+                <button type="submit" class="btn" style="width:100%;" id="meetSubmit">Submit Your Request</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Notification -->
+<div class="notification" id="notification">
+    <span id="notificationText">Request submitted! Check your email for details.</span>
+</div>
+
+<!-- Live Chat Widget -->
+<div class="chat-widget-container">
+    <button class="chat-widget-button" id="chatWidgetButton" aria-label="Open chat">
+        <i class="fas fa-comments"></i>
+    </button>
+    <div class="chat-widget-box" id="chatWidgetBox">
+        <div class="chat-widget-header">
+            <h3>Live Support</h3>
+            <span class="chat-widget-close" id="chatWidgetClose">&times;</span>
+        </div>
+        <div class="chat-widget-messages" id="chatWidgetMessages">
+            <div class="chat-widget-message bot">Hi! How can I help you today?</div>
+            <div class="chat-widget-quick-questions">
+                <div class="chat-widget-quick-question" data-question="I need help with my membership purchase">I need help with my membership</div>
+                <div class="chat-widget-quick-question" data-question="I have issues with Meet and Greet registration">Issues with Meet &amp; Greet</div>
+            </div>
+        </div>
+        <div class="chat-widget-input-bar">
+            <input type="text" id="chatWidgetInput" placeholder="Type your message..." autocomplete="off">
+            <button id="chatWidgetSend"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+<script>
+// =====================================================================
+// MODAL FUNCTIONS — simple, reliable, no dependencies
+// =====================================================================
+function openModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (!modal) { console.error('Modal not found:', modalId); return; }
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+}
+
+// Close modal on backdrop click
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal') && e.target.classList.contains('is-open')) {
+        e.target.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.is-open').forEach(function(m) {
+            m.classList.remove('is-open');
+        });
+        document.body.style.overflow = '';
+        // also close chat
+        var chatBox = document.getElementById('chatWidgetBox');
+        if (chatBox) chatBox.style.display = 'none';
+    }
+});
+
+// =====================================================================
+// MEMBERSHIP / PACKAGE SELECTION
+// =====================================================================
+function selectMembership(element) {
+    element.parentElement.querySelectorAll('.membership-option').forEach(function(o) {
+        o.classList.remove('selected');
+    });
+    element.classList.add('selected');
+    var radio = element.querySelector('input[type="radio"]');
+    if (radio) radio.checked = true;
+}
+
+function selectMeetPackage(element) {
+    element.parentElement.querySelectorAll('.membership-option').forEach(function(o) {
+        o.classList.remove('selected');
+    });
+    element.classList.add('selected');
+    var radio = element.querySelector('input[type="radio"]');
+    if (radio) radio.checked = true;
+}
+
+// =====================================================================
+// NOTIFICATION
+// =====================================================================
+function showNotification(message, type) {
+    var n = document.getElementById('notification');
+    if (!n) return;
+    n.textContent = message;
+    n.className = (type === 'error') ? 'notification error' : 'notification';
+    n.style.display = 'block';
+    setTimeout(function() { n.style.display = 'none'; }, 6000);
+}
+
+// =====================================================================
+// RATE LIMITING
+// =====================================================================
+var submissionLimits = {
+    contact:    { count: 0, lastReset: Date.now() },
+    membership: { count: 0, lastReset: Date.now() },
+    meet:       { count: 0, lastReset: Date.now() }
+};
+
+function checkRateLimit(formType) {
+    var now = Date.now();
+    var limit = submissionLimits[formType];
+    if (now - limit.lastReset > 3600000) { limit.count = 0; limit.lastReset = now; }
+    if (limit.count >= 3) {
+        showNotification('Too many submissions. Please try again later.', 'error');
+        return false;
+    }
+    limit.count++;
+    return true;
+}
+
+// =====================================================================
+// FORM SUBMISSION via Formspree
+// =====================================================================
+function handleFormSubmission(form, successId, statusId, formType) {
+    if (!checkRateLimit(formType)) return;
+
+    // Honeypot check — look by name
+    var honeypotNames = ['website', 'url', 'homepage'];
+    for (var i = 0; i < honeypotNames.length; i++) {
+        var hp = form.querySelector('input[name="' + honeypotNames[i] + '"]');
+        if (hp && hp.value) { return; } // silently reject bot
+    }
+
+    var btn = form.querySelector('button[type="submit"]');
+    var originalText = btn.textContent;
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    var statusEl = document.getElementById(statusId);
+    if (statusEl) statusEl.style.display = 'none';
+
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+        if (response.ok) {
+            var successEl = document.getElementById(successId);
+            if (successEl) successEl.style.display = 'block';
+            if (statusEl) {
+                statusEl.className = 'formspree-status success';
+                statusEl.textContent = 'Request submitted successfully!';
+                statusEl.style.display = 'block';
+            }
+            showNotification('Request submitted! Check your email for details.');
+            form.reset();
+            // Deselect membership options
+            form.querySelectorAll('.membership-option').forEach(function(o) { o.classList.remove('selected'); });
+            // Auto-close modal after 8 seconds
+            setTimeout(function() {
+                var modal = form.closest('.modal');
+                if (modal) closeModal(modal.id);
+            }, 8000);
+        } else {
+            response.json().then(function(data) {
+                var msg = (data.errors) ? data.errors.map(function(e) { return e.message; }).join(', ') : 'Submission error. Please try again.';
+                if (statusEl) {
+                    statusEl.className = 'formspree-status error';
+                    statusEl.textContent = msg;
+                    statusEl.style.display = 'block';
+                }
+                showNotification(msg, 'error');
+            });
+        }
+    })
+    .catch(function() {
+        if (statusEl) {
+            statusEl.className = 'formspree-status error';
+            statusEl.textContent = 'Network error. Please check your connection and try again.';
+            statusEl.style.display = 'block';
+        }
+        showNotification('Network error. Please try again.', 'error');
+    })
+    .finally(function() {
+        btn.textContent = originalText;
+        btn.disabled = false;
+    });
+}
+
+// =====================================================================
+// FORM EVENT LISTENERS
+// =====================================================================
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    handleFormSubmission(this, 'successMessage', 'formspreeStatus', 'contact');
+});
+
+document.getElementById('membershipForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    handleFormSubmission(this, 'membershipSuccessMessage', 'membershipFormspreeStatus', 'membership');
+});
+
+document.getElementById('meetForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    handleFormSubmission(this, 'meetSuccessMessage', 'meetFormspreeStatus', 'meet');
+});
+
+// =====================================================================
+// CHAT WIDGET
+// =====================================================================
+(function() {
+    var btn   = document.getElementById('chatWidgetButton');
+    var box   = document.getElementById('chatWidgetBox');
+    var close = document.getElementById('chatWidgetClose');
+    var msgs  = document.getElementById('chatWidgetMessages');
+    var input = document.getElementById('chatWidgetInput');
+    var send  = document.getElementById('chatWidgetSend');
+
+    btn.addEventListener('click', function() {
+        box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+    });
+    close.addEventListener('click', function() { box.style.display = 'none'; });
+    send.addEventListener('click', sendMsg);
+    input.addEventListener('keypress', function(e) { if (e.key === 'Enter') sendMsg(); });
+
+    msgs.addEventListener('click', function(e) {
+        if (e.target.classList.contains('chat-widget-quick-question')) {
+            addMsg(e.target.dataset.question, 'user');
+            setTimeout(function() {
+                var q = e.target.dataset.question.toLowerCase();
+                var r = q.includes('membership')
+                    ? 'For membership help, please fill in the Membership form on the page or contact us directly.'
+                    : 'For Meet & Greet issues, please fill the Meet & Greet form or email us directly.';
+                addMsg(r, 'bot');
+            }, 900);
+        }
+    });
+
+    function sendMsg() {
+        var txt = input.value.trim();
+        if (!txt) return;
+        addMsg(txt, 'user');
+        input.value = '';
+        setTimeout(function() {
+            var replies = [
+                "Thank you for reaching out! We'll get back to you soon.",
+                "Our team will reply as soon as possible.",
+                "Thanks for your message. We're on it!",
+                "We appreciate your patience. Our support team will be with you shortly."
+            ];
+            addMsg(replies[Math.floor(Math.random() * replies.length)], 'bot');
+        }, 900);
+    }
+
+    function addMsg(text, sender) {
+        var d = document.createElement('div');
+        d.className = 'chat-widget-message ' + (sender === 'user' ? 'user' : 'bot');
+        d.textContent = text;
+        msgs.appendChild(d);
+        msgs.scrollTop = msgs.scrollHeight;
+    }
+})();
+
+// =====================================================================
+// LANGUAGE SUPPORT
+// =====================================================================
+var translations = {
+    en: {
+        navHome:"Home", navAbout:"About", navProducts:"Products", navContact:"Contact",
+        heroTitle1:"Welcome To", heroTitle2:"William Levy Official Fan Platform",
+        heroDescription:"Get exclusive access to fan memberships, and meet & greet opportunities with William Levy himself!",
+        heroButton:"Explore Offers",
+        secureText:"Secure Connection",
+        securityNoticeTitle:"Security Notice:",
+        securityNoticeText:"This website uses advanced security measures to protect your data. All form submissions are encrypted and monitored for suspicious activity.",
+        productsTitle:"Exclusive Fan Offers",
+        membershipTitle:"Fan Membership", membershipDescription:"Join the exclusive fan club for special perks, discounts, and exclusive content.", membershipPrice:"From €499.99/year", membershipButton:"Apply Now",
+        meetTitle:"Meet & Greet", meetDescription:"Get the chance to meet William Levy personally. A once-in-a-lifetime experience!", meetPrice:"From €1499.99", meetButton:"Book Now",
+        aboutTitle:"About William Levy",
+        aboutText1:"William Levy is a Cuban-American actor and model known for his work in telenovelas and Hollywood films.",
+        aboutText2:"With his charismatic personality and talent, William has amassed a huge global fanbase.",
+        aboutText3:"Join thousands of fans worldwide in supporting this incredible artist!",
+        contactTitle:"Subscribe To Our Newsletters", nameLabel:"Full Name", emailLabel:"Email Address", contactSubmit:"Join Our Newsletters",
+        successText:"You Have Successfully Subscribed To Newsletters. Thank You!",
+        footerAboutTitle:"About Us", footerAboutText:"The official William Levy fan Platform offering exclusive access to memberships and meet & greet experiences.",
+        footerLinksTitle:"Quick Links", footerHome:"Home", footerAbout:"About", footerProducts:"Products", footerContact:"Contact",
+        footerConnectTitle:"Connect With Us", footerFollowText:"Follow William Levy on social media for the latest updates!",
+        copyrightText:"© 2026 William Levy Fan Platform. All rights reserved.",
+        membershipModalTitle:"Fan Membership", membershipSelectText:"Select your preferred membership level:",
+        regularFanTitle:"Regular Fan", regularFanDesc:"Basic benefits",
+        vipFanTitle:"VIP Fan", vipFanDesc:"Extra benefits",
+        vvipFanTitle:"VVIP Fan", vvipFanDesc:"All benefits",
+        membershipNameLabel:"Full Name", membershipPhoneLabel:"Phone Number", membershipEmailLabel:"Email Address",
+        fanYearLabel:"What Year Did You Become A Fan", membershipCountryLabel:"Country", membershipAddressLabel:"Address",
+        membershipSubmit:"Submit Your Request", membershipSuccessText:"Your request has been submitted! We will contact you via email shortly. Thank you.",
+        meetModalTitle:"Meet & Greet", meetSelectText:"Select your preferred meet & greet package:",
+        standardMeetTitle:"Standard", standardMeetDesc:"Basic experience",
+        photoMeetTitle:"Photo Experience", photoMeetDesc:"Includes photo session",
+        ultimateMeetTitle:"Ultimate", ultimateMeetDesc:"VIP with all benefits",
+        meetDateLabel:"Preferred Meeting Date", specialRequestsLabel:"Special Requests",
+        meetFanYearLabel:"What Year Did You Become A Fan", meetFullNameLabel:"Full Name",
+        meetPhoneLabel:"Phone Number", meetEmailLabel:"Email Address", meetCountryLabel:"Country", meetAddressLabel:"Address",
+        meetSubmit:"Submit Your Request", meetSuccessText:"Your request has been submitted! We will contact you via email shortly. Thank you.",
+        notificationText:"Request submitted! Check your email for details."
+    },
+    es: {
+        navHome:"Inicio", navAbout:"Acerca de", navProducts:"Productos", navContact:"Contacto",
+        heroTitle1:"Bienvenido a", heroTitle2:"Plataforma Oficial de Fans de William Levy",
+        heroDescription:"¡Obtén acceso exclusivo a membresías de fanáticos y oportunidades de encuentros con el propio William Levy!",
+        heroButton:"Explorar Ofertas", secureText:"Conexión Segura",
+        securityNoticeTitle:"Aviso de Seguridad:", securityNoticeText:"Este sitio web utiliza medidas de seguridad avanzadas para proteger sus datos.",
+        productsTitle:"Ofertas Exclusivas para Fans",
+        membershipTitle:"Membresía de Fan", membershipDescription:"Únete al club exclusivo de fans para beneficios especiales.", membershipPrice:"Desde €499.99/año", membershipButton:"Aplicar ahora",
+        meetTitle:"Encuentro Personal", meetDescription:"Ten la oportunidad de conocer personalmente a William Levy.", meetPrice:"Desde €1499.99", meetButton:"Reservar ahora",
+        aboutTitle:"Acerca de William Levy",
+        aboutText1:"William Levy es un actor y modelo cubano-estadounidense conocido por su trabajo en telenovelas y películas de Hollywood.",
+        aboutText2:"Con su personalidad carismática y talento, William ha acumulado una enorme base de fans global.",
+        aboutText3:"¡Únete a miles de fans en todo el mundo para apoyar a este increíble artista!",
+        contactTitle:"Únase a nuestros boletines", nameLabel:"Nombre Completo", emailLabel:"Correo Electrónico", contactSubmit:"Únete ahora",
+        successText:"Se ha suscrito correctamente. Gracias.",
+        footerAboutTitle:"Acerca de Nosotros", footerAboutText:"La plataforma oficial de fans de William Levy.",
+        footerLinksTitle:"Enlaces Rápidos", footerHome:"Inicio", footerAbout:"Acerca de", footerProducts:"Productos", footerContact:"Contacto",
+        footerConnectTitle:"Conéctate con Nosotros", footerFollowText:"¡Sigue a William Levy en las redes sociales!",
+        copyrightText:"© 2026 Plataforma de Fans de William Levy. Todos los derechos reservados.",
+        membershipModalTitle:"Membresía de Fan", membershipSelectText:"Selecciona tu nivel de membresía:",
+        regularFanTitle:"Fan Regular", regularFanDesc:"Beneficios básicos",
+        vipFanTitle:"Fan VIP", vipFanDesc:"Beneficios extra",
+        vvipFanTitle:"Fan VVIP", vvipFanDesc:"Todos los beneficios",
+        membershipNameLabel:"Nombre Completo", membershipPhoneLabel:"Teléfono", membershipEmailLabel:"Correo",
+        fanYearLabel:"¿En qué año te convertiste en fan?", membershipCountryLabel:"País", membershipAddressLabel:"Dirección",
+        membershipSubmit:"Enviar Solicitud", membershipSuccessText:"Solicitud enviada. La administración se comunicará con usted pronto. Gracias.",
+        meetModalTitle:"Encuentro Personal", meetSelectText:"Selecciona tu paquete de encuentro:",
+        standardMeetTitle:"Estándar", standardMeetDesc:"Experiencia básica",
+        photoMeetTitle:"Experiencia Fotográfica", photoMeetDesc:"Incluye sesión fotográfica",
+        ultimateMeetTitle:"Ultimate", ultimateMeetDesc:"Tratamiento VIP",
+        meetDateLabel:"Fecha preferida", specialRequestsLabel:"Solicitudes Especiales",
+        meetFanYearLabel:"¿En qué año te convertiste en fan?", meetFullNameLabel:"Nombre Completo",
+        meetPhoneLabel:"Teléfono", meetEmailLabel:"Correo", meetCountryLabel:"País", meetAddressLabel:"Dirección",
+        meetSubmit:"Enviar Solicitud", meetSuccessText:"Solicitud enviada. La administración se comunicará con usted pronto. Gracias.",
+        notificationText:"¡Nueva solicitud enviada! Revisa tu correo electrónico."
+    },
+    fr: {
+        navHome:"Accueil", navAbout:"À propos", navProducts:"Produits", navContact:"Contact",
+        heroTitle1:"Bienvenue sur", heroTitle2:"Plateforme Officielle des Fans de William Levy",
+        heroDescription:"Accédez exclusivement à des adhésions de fans et à des opportunités de rencontrer William Levy!",
+        heroButton:"Découvrir les offres", secureText:"Connexion sécurisée",
+        securityNoticeTitle:"Avis de sécurité:", securityNoticeText:"Ce site utilise des mesures de sécurité avancées pour protéger vos données.",
+        productsTitle:"Offres Exclusives pour les Fans",
+        membershipTitle:"Adhésion Fan", membershipDescription:"Rejoignez le club exclusif des fans.", membershipPrice:"À partir de 499,99€/an", membershipButton:"Postulez maintenant",
+        meetTitle:"Rencontre", meetDescription:"Rencontrez William Levy en personne.", meetPrice:"À partir de 1499,99€", meetButton:"Réservez maintenant",
+        aboutTitle:"À propos de William Levy",
+        aboutText1:"William Levy est un acteur cubano-américain connu pour ses rôles dans des telenovelas et des films hollywoodiens.",
+        aboutText2:"Avec son charisme, William a rassemblé une immense base de fans dans le monde entier.",
+        aboutText3:"Rejoignez des milliers de fans pour soutenir cet artiste incroyable!",
+        contactTitle:"Abonnez-vous à nos newsletters", nameLabel:"Nom complet", emailLabel:"Adresse e-mail", contactSubmit:"Rejoignez-nous",
+        successText:"Vous avez souscrit avec succès. Merci.",
+        footerAboutTitle:"À propos de nous", footerAboutText:"La plateforme officielle de fans William Levy.",
+        footerLinksTitle:"Liens rapides", footerHome:"Accueil", footerAbout:"À propos", footerProducts:"Produits", footerContact:"Contact",
+        footerConnectTitle:"Nous contacter", footerFollowText:"Suivez William Levy sur les réseaux sociaux!",
+        copyrightText:"© 2026 Plateforme de Fans de William Levy. Tous droits réservés.",
+        membershipModalTitle:"Adhésion Fan", membershipSelectText:"Sélectionnez votre niveau d'adhésion:",
+        regularFanTitle:"Fan Régulier", regularFanDesc:"Avantages de base",
+        vipFanTitle:"Fan VIP", vipFanDesc:"Avantages supplémentaires",
+        vvipFanTitle:"Fan VVIP", vvipFanDesc:"Tous les avantages",
+        membershipNameLabel:"Nom complet", membershipPhoneLabel:"Téléphone", membershipEmailLabel:"E-mail",
+        fanYearLabel:"Année où vous êtes devenu fan", membershipCountryLabel:"Pays", membershipAddressLabel:"Adresse",
+        membershipSubmit:"Soumettre la demande", membershipSuccessText:"Votre demande a été soumise. Merci.",
+        meetModalTitle:"Rencontre", meetSelectText:"Sélectionnez votre forfait:",
+        standardMeetTitle:"Standard", standardMeetDesc:"Expérience de base",
+        photoMeetTitle:"Expérience Photo", photoMeetDesc:"Inclut une séance photo",
+        ultimateMeetTitle:"Ultime", ultimateMeetDesc:"Traitement VIP",
+        meetDateLabel:"Date préférée", specialRequestsLabel:"Demandes spéciales",
+        meetFanYearLabel:"Année où vous êtes devenu fan", meetFullNameLabel:"Nom complet",
+        meetPhoneLabel:"Téléphone", meetEmailLabel:"E-mail", meetCountryLabel:"Pays", meetAddressLabel:"Adresse",
+        meetSubmit:"Soumettre la demande", meetSuccessText:"Votre demande a été soumise. Merci.",
+        notificationText:"Nouvelle demande soumise! Vérifiez votre e-mail."
+    },
+    de: {
+        navHome:"Startseite", navAbout:"Über uns", navProducts:"Produkte", navContact:"Kontakt",
+        heroTitle1:"Willkommen bei", heroTitle2:"William Levy Offizielle Fan-Plattform",
+        heroDescription:"Erhalte exklusiven Zugang zu Fan-Mitgliedschaften und Meet & Greet mit William Levy!",
+        heroButton:"Angebote entdecken", secureText:"Sichere Verbindung",
+        securityNoticeTitle:"Sicherheitshinweis:", securityNoticeText:"Diese Website verwendet fortschrittliche Sicherheitsmaßnahmen.",
+        productsTitle:"Exklusive Fan-Angebote",
+        membershipTitle:"Fan-Mitgliedschaft", membershipDescription:"Tritt dem exklusiven Fan-Club bei.", membershipPrice:"Ab €499,99/Jahr", membershipButton:"Jetzt bewerben",
+        meetTitle:"Meet & Greet", meetDescription:"Treffen Sie William Levy persönlich.", meetPrice:"Ab €1499,99", meetButton:"Jetzt buchen",
+        aboutTitle:"Über William Levy",
+        aboutText1:"William Levy ist ein kubanisch-amerikanischer Schauspieler, bekannt aus Telenovelas und Hollywood-Filmen.",
+        aboutText2:"Mit seinem Charisma hat William eine riesige weltweite Fangemeinde aufgebaut.",
+        aboutText3:"Werde Teil von tausenden Fans weltweit!",
+        contactTitle:"Newsletter abonnieren", nameLabel:"Vollständiger Name", emailLabel:"E-Mail-Adresse", contactSubmit:"Jetzt beitreten",
+        successText:"Sie haben unseren Newsletter erfolgreich abonniert. Danke.",
+        footerAboutTitle:"Über uns", footerAboutText:"Die offizielle William Levy Fan-Plattform.",
+        footerLinksTitle:"Schnellzugriff", footerHome:"Startseite", footerAbout:"Über uns", footerProducts:"Produkte", footerContact:"Kontakt",
+        footerConnectTitle:"Verbinde dich mit uns", footerFollowText:"Folge William Levy in den sozialen Medien!",
+        copyrightText:"© 2026 William Levy Fan-Plattform. Alle Rechte vorbehalten.",
+        membershipModalTitle:"Fan-Mitgliedschaft", membershipSelectText:"Wähle dein Mitgliedschaftsniveau:",
+        regularFanTitle:"Regulärer Fan", regularFanDesc:"Grundlegende Vorteile",
+        vipFanTitle:"VIP-Fan", vipFanDesc:"Zusätzliche Vorteile",
+        vvipFanTitle:"VVIP-Fan", vvipFanDesc:"Alle Vorteile",
+        membershipNameLabel:"Vollständiger Name", membershipPhoneLabel:"Telefonnummer", membershipEmailLabel:"E-Mail",
+        fanYearLabel:"In welchem Jahr wurdest du Fan?", membershipCountryLabel:"Land", membershipAddressLabel:"Adresse",
+        membershipSubmit:"Anfrage absenden", membershipSuccessText:"Ihre Anfrage wurde gesendet. Danke.",
+        meetModalTitle:"Meet & Greet", meetSelectText:"Wähle dein Meet & Greet-Paket:",
+        standardMeetTitle:"Standard", standardMeetDesc:"Grundlegendes Erlebnis",
+        photoMeetTitle:"Foto-Erlebnis", photoMeetDesc:"Inkl. professioneller Fotosession",
+        ultimateMeetTitle:"Ultimate", ultimateMeetDesc:"VIP-Behandlung",
+        meetDateLabel:"Bevorzugtes Datum", specialRequestsLabel:"Besondere Wünsche",
+        meetFanYearLabel:"In welchem Jahr wurdest du Fan?", meetFullNameLabel:"Vollständiger Name",
+        meetPhoneLabel:"Telefon", meetEmailLabel:"E-Mail", meetCountryLabel:"Land", meetAddressLabel:"Adresse",
+        meetSubmit:"Anfrage absenden", meetSuccessText:"Ihre Anfrage wurde gesendet. Danke.",
+        notificationText:"Neue Anfrage gesendet! Prüfen Sie Ihre E-Mail."
+    },
+    pt: {
+        navHome:"Início", navAbout:"Sobre", navProducts:"Produtos", navContact:"Contato",
+        heroTitle1:"Bem-vindo à", heroTitle2:"Plataforma Oficial de Fãs William Levy",
+        heroDescription:"Tenha acesso exclusivo a membros do fã-clube e oportunidades de conhecer William Levy!",
+        heroButton:"Ver Ofertas", secureText:"Conexão Segura",
+        securityNoticeTitle:"Aviso de Segurança:", securityNoticeText:"Este site utiliza medidas avançadas de segurança para proteger seus dados.",
+        productsTitle:"Ofertas Exclusivas para Fãs",
+        membershipTitle:"Assinatura de Fã", membershipDescription:"Junte-se ao clube exclusivo.", membershipPrice:"A partir de €499,99/ano", membershipButton:"Inscreva-se",
+        meetTitle:"Meet & Greet", meetDescription:"Conheça William Levy pessoalmente.", meetPrice:"A partir de €1499,99", meetButton:"Reserve agora",
+        aboutTitle:"Sobre William Levy",
+        aboutText1:"William Levy é um ator cubano-americano conhecido por novelas e filmes de Hollywood.",
+        aboutText2:"Com seu carisma, William conquistou uma enorme base de fãs mundial.",
+        aboutText3:"Junte-se a milhares de fãs apoiando este incrível artista!",
+        contactTitle:"Assine Nossas Newsletters", nameLabel:"Nome Completo", emailLabel:"E-mail", contactSubmit:"Cadastre-se",
+        successText:"Você se inscreveu com sucesso. Obrigado.",
+        footerAboutTitle:"Sobre Nós", footerAboutText:"A plataforma oficial de fãs de William Levy.",
+        footerLinksTitle:"Links Rápidos", footerHome:"Início", footerAbout:"Sobre", footerProducts:"Produtos", footerContact:"Contato",
+        footerConnectTitle:"Conecte-se Conosco", footerFollowText:"Siga William Levy nas redes sociais!",
+        copyrightText:"© 2026 Plataforma de Fãs William Levy. Todos os direitos reservados.",
+        membershipModalTitle:"Assinatura de Fã", membershipSelectText:"Selecione seu nível:",
+        regularFanTitle:"Fã Regular", regularFanDesc:"Benefícios básicos",
+        vipFanTitle:"Fã VIP", vipFanDesc:"Benefícios extras",
+        vvipFanTitle:"Fã VVIP", vvipFanDesc:"Todos os benefícios",
+        membershipNameLabel:"Nome Completo", membershipPhoneLabel:"Telefone", membershipEmailLabel:"E-mail",
+        fanYearLabel:"Em que ano você se tornou fã", membershipCountryLabel:"País", membershipAddressLabel:"Endereço",
+        membershipSubmit:"Enviar Pedido", membershipSuccessText:"Solicitação enviada. Obrigado.",
+        meetModalTitle:"Meet & Greet", meetSelectText:"Selecione seu pacote:",
+        standardMeetTitle:"Padrão", standardMeetDesc:"Experiência básica",
+        photoMeetTitle:"Experiência Fotográfica", photoMeetDesc:"Inclui sessão de fotos",
+        ultimateMeetTitle:"Ultimate", ultimateMeetDesc:"Tratamento VIP",
+        meetDateLabel:"Data preferida", specialRequestsLabel:"Solicitações Especiais",
+        meetFanYearLabel:"Em que ano você se tornou fã", meetFullNameLabel:"Nome Completo",
+        meetPhoneLabel:"Telefone", meetEmailLabel:"E-mail", meetCountryLabel:"País", meetAddressLabel:"Endereço",
+        meetSubmit:"Enviar Pedido", meetSuccessText:"Solicitação enviada. Obrigado.",
+        notificationText:"Novo pedido enviado! Confira seu e-mail."
+    },
+    it: {
+        navHome:"Home", navAbout:"Chi siamo", navProducts:"Prodotti", navContact:"Contatto",
+        heroTitle1:"Benvenuto a", heroTitle2:"Piattaforma Ufficiale Fan di William Levy",
+        heroDescription:"Ottieni accesso esclusivo a membership fan e opportunità di incontrare William Levy!",
+        heroButton:"Scopri le offerte", secureText:"Connessione Sicura",
+        securityNoticeTitle:"Avviso di Sicurezza:", securityNoticeText:"Questo sito utilizza misure di sicurezza avanzate.",
+        productsTitle:"Offerte Esclusive per Fan",
+        membershipTitle:"Membership Fan", membershipDescription:"Unisciti al club esclusivo.", membershipPrice:"Da €499.99/anno", membershipButton:"Candidati ora",
+        meetTitle:"Meet & Greet", meetDescription:"Incontra William Levy personalmente.", meetPrice:"Da €1499.99", meetButton:"Prenota ora",
+        aboutTitle:"Chi è William Levy",
+        aboutText1:"William Levy è un attore cubano-americano noto per le telenovelas e film di Hollywood.",
+        aboutText2:"Con il suo carisma, William ha conquistato una vasta base di fan in tutto il mondo.",
+        aboutText3:"Unisciti a migliaia di fan per sostenere questo incredibile artista!",
+        contactTitle:"Iscriviti alle newsletter", nameLabel:"Nome Completo", emailLabel:"Email", contactSubmit:"Iscriviti ora",
+        successText:"Ti sei iscritto con successo. Grazie.",
+        footerAboutTitle:"Chi siamo", footerAboutText:"La piattaforma ufficiale di William Levy.",
+        footerLinksTitle:"Link Rapidi", footerHome:"Home", footerAbout:"Chi siamo", footerProducts:"Prodotti", footerContact:"Contatto",
+        footerConnectTitle:"Connettiti con noi", footerFollowText:"Segui William Levy sui social!",
+        copyrightText:"© 2026 Piattaforma Fan William Levy. Tutti i diritti riservati.",
+        membershipModalTitle:"Membership Fan", membershipSelectText:"Seleziona il tuo livello:",
+        regularFanTitle:"Fan Regolare", regularFanDesc:"Vantaggi base",
+        vipFanTitle:"Fan VIP", vipFanDesc:"Vantaggi extra",
+        vvipFanTitle:"Fan VVIP", vvipFanDesc:"Tutti i vantaggi",
+        membershipNameLabel:"Nome Completo", membershipPhoneLabel:"Telefono", membershipEmailLabel:"Email",
+        fanYearLabel:"In che anno sei diventato fan?", membershipCountryLabel:"Paese", membershipAddressLabel:"Indirizzo",
+        membershipSubmit:"Invia Richiesta", membershipSuccessText:"Richiesta inviata. Grazie.",
+        meetModalTitle:"Meet & Greet", meetSelectText:"Seleziona il tuo pacchetto:",
+        standardMeetTitle:"Standard", standardMeetDesc:"Esperienza base",
+        photoMeetTitle:"Esperienza Fotografica", photoMeetDesc:"Include sessione fotografica",
+        ultimateMeetTitle:"Ultimate", ultimateMeetDesc:"Trattamento VIP",
+        meetDateLabel:"Data preferita", specialRequestsLabel:"Richieste speciali",
+        meetFanYearLabel:"In che anno sei diventato fan?", meetFullNameLabel:"Nome Completo",
+        meetPhoneLabel:"Telefono", meetEmailLabel:"Email", meetCountryLabel:"Paese", meetAddressLabel:"Indirizzo",
+        meetSubmit:"Invia Richiesta", meetSuccessText:"Richiesta inviata. Grazie.",
+        notificationText:"Nuova richiesta inviata! Controlla la tua email."
+    },
+    ru: {
+        navHome:"Главная", navAbout:"О нас", navProducts:"Продукты", navContact:"Контакты",
+        heroTitle1:"Добро пожаловать на", heroTitle2:"Официальная фан-платформа William Levy",
+        heroDescription:"Получите эксклюзивный доступ к членству фан-клуба и возможностям встретиться с William Levy!",
+        heroButton:"Смотреть предложения", secureText:"Безопасное соединение",
+        securityNoticeTitle:"Уведомление о безопасности:", securityNoticeText:"Этот сайт использует современные меры безопасности.",
+        productsTitle:"Эксклюзивные предложения для фанатов",
+        membershipTitle:"Членство фаната", membershipDescription:"Присоединяйтесь к эксклюзивному фан-клубу.", membershipPrice:"От 499,99€/год", membershipButton:"Подать заявку",
+        meetTitle:"Встреча", meetDescription:"Встретьтесь с William Levy лично.", meetPrice:"От 1499,99€", meetButton:"Забронировать",
+        aboutTitle:"О William Levy",
+        aboutText1:"William Levy — кубино-американский актер, известный по теленовеллам и голливудским фильмам.",
+        aboutText2:"Благодаря своему обаянию, William собрал огромную мировую фан-базу.",
+        aboutText3:"Присоединяйтесь к тысячам фанатов по всему миру!",
+        contactTitle:"Подпишитесь на рассылку", nameLabel:"Полное имя", emailLabel:"Электронная почта", contactSubmit:"Присоединиться",
+        successText:"Вы успешно подписались на рассылку. Спасибо.",
+        footerAboutTitle:"О нас", footerAboutText:"Официальная фан-платформа William Levy.",
+        footerLinksTitle:"Быстрые ссылки", footerHome:"Главная", footerAbout:"О нас", footerProducts:"Продукты", footerContact:"Контакты",
+        footerConnectTitle:"Свяжитесь с нами", footerFollowText:"Следите за William Levy в соцсетях!",
+        copyrightText:"© 2026 Фан-платформа William Levy. Все права защищены.",
+        membershipModalTitle:"Членство фаната", membershipSelectText:"Выберите уровень членства:",
+        regularFanTitle:"Обычный фанат", regularFanDesc:"Базовые привилегии",
+        vipFanTitle:"VIP-фанат", vipFanDesc:"Дополнительные привилегии",
+        vvipFanTitle:"VVIP-фанат", vvipFanDesc:"Все привилегии",
+        membershipNameLabel:"Полное имя", membershipPhoneLabel:"Телефон", membershipEmailLabel:"E-mail",
+        fanYearLabel:"В каком году вы стали фанатом", membershipCountryLabel:"Страна", membershipAddressLabel:"Адрес",
+        membershipSubmit:"Отправить заявку", membershipSuccessText:"Заявка отправлена. Спасибо.",
+        meetModalTitle:"Встреча", meetSelectText:"Выберите пакет встречи:",
+        standardMeetTitle:"Стандартный", standardMeetDesc:"Базовый опыт",
+        photoMeetTitle:"Фото-опыт", photoMeetDesc:"Включает фотосессию",
+        ultimateMeetTitle:"Ultimate", ultimateMeetDesc:"VIP-обслуживание",
+        meetDateLabel:"Желаемая дата", specialRequestsLabel:"Особые пожелания",
+        meetFanYearLabel:"В каком году вы стали фанатом", meetFullNameLabel:"Полное имя",
+        meetPhoneLabel:"Телефон", meetEmailLabel:"E-mail", meetCountryLabel:"Страна", meetAddressLabel:"Адрес",
+        meetSubmit:"Отправить заявку", meetSuccessText:"Заявка отправлена. Спасибо.",
+        notificationText:"Новая заявка отправлена! Проверьте почту."
+    },
+    ar: {
+        navHome:"الرئيسية", navAbout:"حول", navProducts:"المنتجات", navContact:"اتصل بنا",
+        heroTitle1:"مرحباً بك في", heroTitle2:"المنصة الرسمية لمعجبي ويليام ليفي",
+        heroDescription:"احصل على وصول حصري لعضوية المعجبين وفرص مقابلة ويليام ليفي!",
+        heroButton:"استكشاف العروض", secureText:"اتصال آمن",
+        securityNoticeTitle:"تنبيه أمني:", securityNoticeText:"يستخدم هذا الموقع إجراءات أمنية متقدمة.",
+        productsTitle:"عروض حصرية للمعجبين",
+        membershipTitle:"عضوية المعجبين", membershipDescription:"انضم إلى نادي المعجبين الحصري.", membershipPrice:"ابتداءً من 499.99€", membershipButton:"تقدم الآن",
+        meetTitle:"لقاء وتعريف", meetDescription:"احصل على فرصة مقابلة ويليام ليفي شخصياً.", meetPrice:"ابتداءً من 1499.99€", meetButton:"احجز الآن",
+        aboutTitle:"حول ويليام ليفي",
+        aboutText1:"ويليام ليفي ممثل كوبي-أمريكي معروف بأعماله في المسلسلات والأفلام.",
+        aboutText2:"بفضل موهبته، جمع ويليام قاعدة جماهيرية ضخمة حول العالم.",
+        aboutText3:"انضم إلى آلاف المعجبين لدعم هذا الفنان الرائع!",
+        contactTitle:"اشترك في النشرات الإخبارية", nameLabel:"الاسم الكامل", emailLabel:"البريد الإلكتروني", contactSubmit:"انضم الآن",
+        successText:"لقد اشتركت بنجاح. شكراً لك.",
+        footerAboutTitle:"حولنا", footerAboutText:"المنصة الرسمية لمعجبي ويليام ليفي.",
+        footerLinksTitle:"روابط سريعة", footerHome:"الرئيسية", footerAbout:"حول", footerProducts:"المنتجات", footerContact:"اتصل بنا",
+        footerConnectTitle:"تواصل معنا", footerFollowText:"تابع ويليام ليفي على وسائل التواصل!",
+        copyrightText:"© 2026 منصة معجبي ويليام ليفي. جميع الحقوق محفوظة.",
+        membershipModalTitle:"عضوية المعجبين", membershipSelectText:"اختر مستوى العضوية:",
+        regularFanTitle:"معجب عادي", regularFanDesc:"مزايا أساسية",
+        vipFanTitle:"معجب VIP", vipFanDesc:"مزايا إضافية",
+        vvipFanTitle:"معجب VVIP", vvipFanDesc:"جميع المزايا",
+        membershipNameLabel:"الاسم الكامل", membershipPhoneLabel:"رقم الهاتف", membershipEmailLabel:"البريد الإلكتروني",
+        fanYearLabel:"في أي سنة أصبحت معجباً", membershipCountryLabel:"الدولة", membershipAddressLabel:"العنوان",
+        membershipSubmit:"إرسال الطلب", membershipSuccessText:"تم إرسال طلبك. شكراً لك.",
+        meetModalTitle:"لقاء وتعريف", meetSelectText:"اختر حزمة اللقاء:",
+        standardMeetTitle:"قياسي", standardMeetDesc:"تجربة أساسية",
+        photoMeetTitle:"تجربة التصوير", photoMeetDesc:"يشمل جلسة تصوير",
+        ultimateMeetTitle:"Ultimate", ultimateMeetDesc:"معاملة VIP",
+        meetDateLabel:"التاريخ المفضل", specialRequestsLabel:"طلبات خاصة",
+        meetFanYearLabel:"في أي سنة أصبحت معجباً", meetFullNameLabel:"الاسم الكامل",
+        meetPhoneLabel:"الهاتف", meetEmailLabel:"البريد", meetCountryLabel:"الدولة", meetAddressLabel:"العنوان",
+        meetSubmit:"إرسال الطلب", meetSuccessText:"تم إرسال طلبك. شكراً لك.",
+        notificationText:"تم إرسال طلب جديد! تحقق من بريدك."
+    },
+    cn: {
+        navHome:"首页", navAbout:"关于", navProducts:"产品", navContact:"联系",
+        heroTitle1:"欢迎来到", heroTitle2:"William Levy官方粉丝平台",
+        heroDescription:"独享粉丝会员资格和与William Levy本人见面的机会！",
+        heroButton:"查看优惠", secureText:"安全连接",
+        securityNoticeTitle:"安全提示：", securityNoticeText:"本网站采用先进的安全措施保护您的数据。",
+        productsTitle:"独家粉丝优惠",
+        membershipTitle:"粉丝会员", membershipDescription:"加入专属粉丝俱乐部。", membershipPrice:"每年€499.99起", membershipButton:"立即申请",
+        meetTitle:"见面会", meetDescription:"有机会亲自见到William Levy。", meetPrice:"€1499.99起", meetButton:"立即预订",
+        aboutTitle:"关于William Levy",
+        aboutText1:"William Levy是一位古巴裔美国演员，因出演肥皂剧和好莱坞电影而闻名。",
+        aboutText2:"凭借其迷人的个性，William积累了庞大的全球粉丝基础。",
+        aboutText3:"加入全球数千名粉丝，共同支持这位杰出的艺术家！",
+        contactTitle:"订阅我们的新闻通讯", nameLabel:"全名", emailLabel:"电子邮件", contactSubmit:"立即加入",
+        successText:"您已成功订阅。谢谢！",
+        footerAboutTitle:"关于我们", footerAboutText:"William Levy官方粉丝平台。",
+        footerLinksTitle:"快速链接", footerHome:"首页", footerAbout:"关于", footerProducts:"产品", footerContact:"联系",
+        footerConnectTitle:"与我们联系", footerFollowText:"关注William Levy社交媒体！",
+        copyrightText:"© 2026 William Levy粉丝平台。保留所有权利。",
+        membershipModalTitle:"粉丝会员", membershipSelectText:"请选择您的会员等级：",
+        regularFanTitle:"普通粉丝", regularFanDesc:"基础福利",
+        vipFanTitle:"VIP粉丝", vipFanDesc:"额外福利",
+        vvipFanTitle:"VVIP粉丝", vvipFanDesc:"全部福利",
+        membershipNameLabel:"全名", membershipPhoneLabel:"电话号码", membershipEmailLabel:"电子邮件",
+        fanYearLabel:"您成为粉丝的年份", membershipCountryLabel:"国家", membershipAddressLabel:"地址",
+        membershipSubmit:"提交请求", membershipSuccessText:"您的请求已提交。谢谢！",
+        meetModalTitle:"见面会", meetSelectText:"请选择您的见面套餐：",
+        standardMeetTitle:"标准", standardMeetDesc:"基础见面体验",
+        photoMeetTitle:"摄影体验", photoMeetDesc:"含专业摄影环节",
+        ultimateMeetTitle:"至尊体验", ultimateMeetDesc:"VIP待遇",
+        meetDateLabel:"首选见面日期", specialRequestsLabel:"特别要求",
+        meetFanYearLabel:"您成为粉丝的年份", meetFullNameLabel:"全名",
+        meetPhoneLabel:"电话号码", meetEmailLabel:"电子邮件", meetCountryLabel:"国家", meetAddressLabel:"地址",
+        meetSubmit:"提交请求", meetSuccessText:"您的请求已提交。谢谢！",
+        notificationText:"新请求已提交！请查收您的电子邮件。"
+    },
+    el: {
+        navHome:"Αρχική", navAbout:"Σχετικά", navProducts:"Προϊόντα", navContact:"Επικοινωνία",
+        heroTitle1:"Καλώς ήρθατε στην", heroTitle2:"Επίσημη Πλατφόρμα Φαν του William Levy",
+        heroDescription:"Αποκτήστε αποκλειστική πρόσβαση σε συνδρομές φαν και ευκαιρίες να γνωρίσετε τον William Levy!",
+        heroButton:"Δείτε Προσφορές", secureText:"Ασφαλής Σύνδεση",
+        securityNoticeTitle:"Ειδοποίηση Ασφαλείας:", securityNoticeText:"Αυτός ο ιστότοπος χρησιμοποιεί προηγμένα μέτρα ασφαλείας.",
+        productsTitle:"Αποκλειστικές Προσφορές Φαν",
+        membershipTitle:"Συνδρομή Φαν", membershipDescription:"Γίνετε μέλος στο αποκλειστικό fan club.", membershipPrice:"Από €499.99/έτος", membershipButton:"Κάντε αίτηση",
+        meetTitle:"Συνάντηση", meetDescription:"Γνωρίστε τον William Levy προσωπικά.", meetPrice:"Από €1499.99", meetButton:"Κάντε κράτηση",
+        aboutTitle:"Σχετικά με τον William Levy",
+        aboutText1:"Ο William Levy είναι Κουβανός-Αμερικανός ηθοποιός γνωστός από τηλενουβέλες και ταινίες.",
+        aboutText2:"Με το χάρισμά του, ο William έχει αποκτήσει τεράστια παγκόσμια βάση θαυμαστών.",
+        aboutText3:"Γίνετε μέλος χιλιάδων φαν παγκοσμίως!",
+        contactTitle:"Εγγραφείτε στα ενημερωτικά μας", nameLabel:"Ονοματεπώνυμο", emailLabel:"Email", contactSubmit:"Εγγραφείτε",
+        successText:"Εγγραφήκατε με επιτυχία. Ευχαριστούμε.",
+        footerAboutTitle:"Σχετικά με Εμάς", footerAboutText:"Η επίσημη πλατφόρμα φαν του William Levy.",
+        footerLinksTitle:"Γρήγοροι Σύνδεσμοι", footerHome:"Αρχική", footerAbout:"Σχετικά", footerProducts:"Προϊόντα", footerContact:"Επικοινωνία",
+        footerConnectTitle:"Συνδεθείτε μαζί μας", footerFollowText:"Ακολουθήστε τον William Levy στα κοινωνικά δίκτυα!",
+        copyrightText:"© 2026 Πλατφόρμα Φαν William Levy. Όλα τα δικαιώματα διατηρούνται.",
+        membershipModalTitle:"Συνδρομή Φαν", membershipSelectText:"Επιλέξτε επίπεδο συνδρομής:",
+        regularFanTitle:"Κανονικός Φαν", regularFanDesc:"Βασικά προνόμια",
+        vipFanTitle:"VIP Φαν", vipFanDesc:"Επιπλέον προνόμια",
+        vvipFanTitle:"VVIP Φαν", vvipFanDesc:"Όλα τα προνόμια",
+        membershipNameLabel:"Ονοματεπώνυμο", membershipPhoneLabel:"Τηλέφωνο", membershipEmailLabel:"Email",
+        fanYearLabel:"Τι χρονιά γίνατε φαν", membershipCountryLabel:"Χώρα", membershipAddressLabel:"Διεύθυνση",
+        membershipSubmit:"Υποβολή Αιτήματος", membershipSuccessText:"Η αίτησή σας υποβλήθηκε. Ευχαριστούμε.",
+        meetModalTitle:"Συνάντηση", meetSelectText:"Επιλέξτε πακέτο συνάντησης:",
+        standardMeetTitle:"Τυπική", standardMeetDesc:"Βασική εμπειρία",
+        photoMeetTitle:"Φωτογραφική", photoMeetDesc:"Περιλαμβάνει φωτογράφιση",
+        ultimateMeetTitle:"Ultimate", ultimateMeetDesc:"VIP μεταχείριση",
+        meetDateLabel:"Προτιμώμενη Ημερομηνία", specialRequestsLabel:"Ειδικά Αιτήματα",
+        meetFanYearLabel:"Τι χρονιά γίνατε φαν", meetFullNameLabel:"Ονοματεπώνυμο",
+        meetPhoneLabel:"Τηλέφωνο", meetEmailLabel:"Email", meetCountryLabel:"Χώρα", meetAddressLabel:"Διεύθυνση",
+        meetSubmit:"Υποβολή Αιτήματος", meetSuccessText:"Η αίτησή σας υποβλήθηκε. Ευχαριστούμε.",
+        notificationText:"Νέο αίτημα υποβλήθηκε! Ελέγξτε το email σας."
+    }
+};
+
+function setLanguage(lang) {
+    if (!translations[lang]) return;
+    localStorage.setItem('preferredLanguage', lang);
+    var disp = document.getElementById('currentLangDisplay');
+    var curr = document.getElementById('currentLang');
+    if (disp) disp.textContent = lang.toUpperCase();
+    if (curr) curr.textContent = lang.toUpperCase();
+    document.documentElement.lang = lang;
+    var t = translations[lang];
+    for (var key in t) {
+        var el = document.getElementById(key);
+        if (el) el.textContent = t[key];
+    }
+}
+
+function detectUserLanguage() {
+    var saved = localStorage.getItem('preferredLanguage');
+    if (saved && translations[saved]) return saved;
+    var bl = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+    return translations[bl] ? bl : 'en';
+}
+
+// =====================================================================
+// INIT on DOM ready
+// =====================================================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Set language
+    setLanguage(detectUserLanguage());
+
+    // Set min date for Meet & Greet
+    var meetDate = document.getElementById('meetDate');
+    if (meetDate) meetDate.min = new Date().toISOString().split('T')[0];
+});
+</script>
+</body>
+</html>
